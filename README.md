@@ -7,5 +7,5 @@ How to Run this project
 5. jalankan "php artisan migrate"
 6. setelah itu jalankan "php artisan key:generate"
 7. jalankan "php artisan serve"
-8. jalankan "npm run dev" di terminal baru
+8. jalankan "npm run dev" di terminal baru (Jalankan 2 Terminal secara bersamaan untuk langkah 7 & 8)
 9. finish
