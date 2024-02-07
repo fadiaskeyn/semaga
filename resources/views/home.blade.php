@@ -11,7 +11,7 @@
       <div class="w-full mx-auto p-8 flex items-center justify-between">
         <div class="flex items-center">
           <img src="../../../asset/assets/icon/logosmada.png" alt="logosmada" class="w-[84px]">
-          <span class="px-3 text-2xl font-semibold w-[200px]">SMA NEGERI 2 JEMBER </span>
+          <span class="px-3 text-2xl font-semibold w-[200px]">SMA NEGERI 3 JEMBER </span>
         </div>
         <div class="flex w-64 h-20 items-center border-b-4 border-slate-500 rounded-[45px] bg-green-500 shadow-lg transition delay-100 hover:bg-green-700">
           <a href="users/login" class="flex">
@@ -30,16 +30,16 @@
             <h1 class="text-5xl ">
               selamat datang di <br>
               <span class="text-green-500 font-bold text-7xl">
-              SEMADA
+              SEMAGA
               </span>
               <br>
              <span class="text-4xl font-semibold block">
-              Sistem E-learning  SMAN 2 Jember
+              Sistem E-learning  SMAN 3 Jember
               </span>
               <br>
             </h1>
             <p class="text-3xl">
-              Semada adalah Sistem <i>E-learning </i>yang berbasis web,
+              Semaga adalah Sistem <i>E-learning </i>yang berbasis web,
               untuk tenaga pengajar dan siswa dalam pembelajaran.
             </p>
           </div>
