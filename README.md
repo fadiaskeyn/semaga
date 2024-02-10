@@ -4,7 +4,7 @@ How to Run this project
 2. ubah nama .envexample menjadi ".env"
 3. jalankan "composer install"
 4. jalankan "npm install
-5. jalankan "php artisan migrate"
+5. jalankan "php artisan migrate" (pastikan memiliki database bernama 'semaga' di mysql)
 6. setelah itu jalankan "php artisan key:generate"
 7. jalankan "php artisan serve"
 8. jalankan "npm run dev" di terminal baru (Jalankan 2 Terminal secara bersamaan untuk langkah 7 & 8)
