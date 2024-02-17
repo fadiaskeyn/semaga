@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class users extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
