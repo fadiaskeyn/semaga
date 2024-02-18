@@ -31,6 +31,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/student', function () {
     return view('pages.students.index');
 
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('student');
 
 require __DIR__.'/auth.php';
