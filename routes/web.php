@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,9 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/student', function () {
-    return view('pages.students.index');
-
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/students', [StudentController::class, 'index'])->middleware('auth','verified')->name('students');
 
 require __DIR__.'/auth.php';

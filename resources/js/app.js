@@ -10,3 +10,8 @@ import {
   } from "tw-elements";
 
   initTE({ Sidenav });
+
+//   const sidenav = document.getElementById("mySidenav");
+//   const sidenavInstance = new Sidenav(sidenav);
+//   sidenavInstance.show();
+//   COPY

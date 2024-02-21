@@ -9,16 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+   public function up()
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('nis');
-            $table->string('email');
-            $table->timestamp('email_verified_at');
+            $table->string('name')->nullable();
+            $table->string('nis')->nullable();
+            $table->string('grade')->nullable();
+            $table->enum('gender', ['L','P'])->nullable();
+            $table->string('email')->nullable();
+            $table->timestamp('email_verified_at')->userCurrent();
             $table->string('password');
-            $table->timestamp('updated_at')->nullable();
+            $table->foreignId('major_id')->constrained('majors')->nullable();
+            $table->foreignId('exam_id')->constrained('exams')->nullable();
+            $table->timestamps();
         });
     }
 
