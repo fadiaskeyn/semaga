@@ -29,6 +29,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+<<<<<<< HEAD
 Route::get('/students', [StudentController::class, 'index'])->middleware('auth','verified')->name('students');
+=======
+Route::get('/student', function () {
+    return view('pages.students.index');
+
+})->middleware(['auth', 'verified'])->name('student');
+>>>>>>> 24cdea7b68b217ee32ffc3a47eee6a23924c2d03
 
 require __DIR__.'/auth.php';
