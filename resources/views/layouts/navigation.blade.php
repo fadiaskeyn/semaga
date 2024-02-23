@@ -3,37 +3,18 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-<<<<<<< HEAD
                 <!-- Logo -->
 
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="shrink-0 flex items-center">
-                        <a href="{{ route('dashboard') }}">
                             <x-tombol-side class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                        </a>
                     </div>
-                    {{--  <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-=======
-                <!-- Hamburger Navigation -->
-                <div class="shrink-0 flex items-center">
-                        <x-tombol-side/>
                 </div>
-
-                <!-- Navigation Links -->
                 <div class="space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
->>>>>>> 24cdea7b68b217ee32ffc3a47eee6a23924c2d03
-                        {{ __('Dashboard') }}
+                    {{--  <x-nav-link>
                     </x-nav-link>  --}}
-                </div>
-
-
-                <div class="space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('student')" :active="request()->routeIs('student')">
-                        {{ __('Student') }}
-                    </x-nav-link>
                 </div>
             </div>
 

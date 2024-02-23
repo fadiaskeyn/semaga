@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->userCurrent();
             $table->string('password');
-            $table->foreignId('major_id')->constrained('majors')->nullable();
-            $table->foreignId('exam_id')->constrained('exams')->nullable();
+            $table->foreignId('major_id')->constrained('majors')->nullable()->default(null);
+            $table->foreignId('exam_id')->constrained('exams')->nullable()->default(null);
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class StudentController extends Controller
     }
 
     public function create(){
-        // function create data, contoh menampilkan form
+        // function create data, contoh men ampilkan form
     }
 
 

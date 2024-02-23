@@ -21,9 +21,10 @@ class StudentFactory extends Factory
             'nis' => $this->faker->unique()->numberBetween(100000000, 999999999),
             'grade' => $this->faker->randomElement(['10', '11', '12']),
             'email' => $this->faker->unique()->safeEmail,
+            'email_verified_at' => now(),   
             'password' => bcrypt('password'),
-            'major_id' => $this->faker->numberBetween(1, 10),
-            'exam_id' => $this->faker->numberBetween(1, 5),
+            'major_id' => $this->faker->numberBetween(1, 3),
+            'exam_id' => $this->faker->numberBetween(1, 3),
         ];
     }
 }
