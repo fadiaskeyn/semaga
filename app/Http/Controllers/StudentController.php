@@ -9,6 +9,7 @@ use App\models\student;
 use illuminate\http\RedirectRespons;
 use illuminate\view\view;
 use illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Model;
 
 class StudentController extends Controller
 {
