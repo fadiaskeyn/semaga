@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Database\Seeders\students;
 use App\models\student;
+use illuminate\http\RedirectRespons;
+use illuminate\view\view;
+use illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
