@@ -13,15 +13,13 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Guarded is the reverse of fillable.
+     * If fillable specifies which fields to be mass assigned,
+     * guarded specifies which fields are not mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded= [];
 
     /**
      * The attributes that should be hidden for serialization.

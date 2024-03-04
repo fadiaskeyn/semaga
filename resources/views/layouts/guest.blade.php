@@ -19,7 +19,7 @@
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 <div class="flex items-center justify-center">
                 <a href="/">
-                    <img src="{{ asset('img/logo-smaga.png') }}" class="w-50 h-50 fill-current text-gray-500" />
+                    <img src="{{ asset('img/logo-sman-3.png') }}" class="h-64 text-gray-500" alt="LOGO SMA NEGERI 3 JEMBER"/>
                 </a>
                 </div>
                 {{ $slot }}
