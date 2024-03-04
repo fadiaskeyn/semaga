@@ -3475,6 +3475,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/ec60a4edf94e63b0556b6a0888548bb400a3a3be",
                 "reference": "ec60a4edf94e63b0556b6a0888548bb400a3a3be",
+
                 "shasum": ""
             },
             "require": {
@@ -3510,7 +3511,9 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
+
                 "source": "https://github.com/symfony/css-selector/tree/v7.0.3"
+
             },
             "funding": [
                 {
@@ -3526,6 +3529,7 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2024-01-23T15:02:46+00:00"
         },
         {
@@ -3672,6 +3676,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
+
             "version": "v7.0.3",
             "source": {
                 "type": "git",
@@ -3732,7 +3737,9 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
+
                 "source": "https://github.com/symfony/event-dispatcher/tree/v7.0.3"
+
             },
             "funding": [
                 {
@@ -3748,7 +3755,9 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2024-01-23T15:02:46+00:00"
+
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -5183,6 +5192,7 @@
         },
         {
             "name": "symfony/string",
+
             "version": "v7.0.3",
             "source": {
                 "type": "git",
@@ -5193,6 +5203,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/string/zipball/524aac4a280b90a4420d8d6a040718d0586505ac",
                 "reference": "524aac4a280b90a4420d8d6a040718d0586505ac",
+
                 "shasum": ""
             },
             "require": {
@@ -5249,7 +5260,9 @@
                 "utf8"
             ],
             "support": {
+
                 "source": "https://github.com/symfony/string/tree/v7.0.3"
+
             },
             "funding": [
                 {
@@ -5265,7 +5278,9 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2024-01-29T15:41:16+00:00"
+
         },
         {
             "name": "symfony/translation",
@@ -8323,6 +8338,7 @@
         },
         {
             "name": "symfony/yaml",
+
             "version": "v7.0.3",
             "source": {
                 "type": "git",
@@ -8333,6 +8349,8 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/2d4fca631c00700597e9442a0b2451ce234513d3",
                 "reference": "2d4fca631c00700597e9442a0b2451ce234513d3",
+
+
                 "shasum": ""
             },
             "require": {
@@ -8374,7 +8392,9 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
+
                 "source": "https://github.com/symfony/yaml/tree/v7.0.3"
+
             },
             "funding": [
                 {
@@ -8390,7 +8410,9 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2024-01-23T15:02:46+00:00"
+
         },
         {
             "name": "theseer/tokenizer",
