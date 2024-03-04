@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             majors::class,
             students::class,
         ]);
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(5)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
