@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
             $table->string('nis')->nullable();
+            $table->string('name')->nullable();
             $table->string('grade')->nullable();
             $table->enum('gender', ['L','P'])->nullable();
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->userCurrent();
             $table->string('password');
-            $table->foreignId('major_id')->constrained('majors')->nullable()->default(null);
-            $table->foreignId('exam_id')->constrained('exams')->nullable()->default(null);
             $table->timestamps();
         });
     }

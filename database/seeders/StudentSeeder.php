@@ -2,22 +2,21 @@
 
 namespace Database\Seeders;
 
+namespace Database\Seeders;
+use App\Models\User;
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class majors extends Seeder
+class StudentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('majors')->insert([
-            ['name' => 'Bahasa Indonesia'],
-            ['name' => 'Matematika'],
-            ['name' => 'Bahasa Cicak'],
-        ]
-    );
+Student::factory(5)->create();
     }
 }

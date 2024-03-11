@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,27 +31,32 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-/*
-|*********************
-| Ada dua route student dengan students,
-| saranku hapus salah satu karena fungsinya sama saja,
-| tinggal tugasmu menyesuaikan referensi hapus student atau students (menggunakan kata jamak 's')
-| rekomendasi setelah perubahan hapus saja pesan ini
-| -Heru
-|*********************
-*/
-Route::get('/students', [StudentController::class, 'index'])->middleware('auth','verified')->name('students');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    /*
+     | WARNING:
+     |----------------------------------------
+     | HELPER for newbies
+     |----------------------------------------
+     | Route::<http>('<routing>',[<controller::class>, | '<method grab from controller>'])->name('<name-reference>');
+     |========================================
+     | NOTE: awasin dibagian penamaan routing dia prular atau tidak,
+     |keep simantic OK!
+     |
+     |========================================
+     */
 
-Route::get('/student', function () {
-    return view('pages.students.index');
+    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
-})->middleware(['auth', 'verified'])->name('student');
+    Route::get('users', [UserController::class, 'index'])->name('user.index');
+    Route::post('users', [UserController::class, 'store'])->name('user.index');
+    Route::get('users/create', [UserController::class, 'create'])->name('user.create');
+    Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('users/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
-Route::middleware(['auth','role:admin'])->group(function(){
-    Route::get('admin/dashboard', [AdminController::class,
-        'AdminDashboard'])->name('admin.dashboard');
+
+    Route::get('students', [StudentController::class, 'index'])->name('student.index');
 }); //End Group Admin Middleware
 
-//TODO route web staff
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
