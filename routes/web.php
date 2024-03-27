@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,22 +31,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+/*
+ | WARNING:
+ |----------------------------------------
+ | HELPER for newbies
+ |----------------------------------------
+ | Route::<http>('<routing>',[<controller::class>, | '<method grab from controller>'])->name('<name-reference>');
+ |========================================
+ | NOTE: awasin dibagian penamaan routing dia prular atau tidak,
+ |keep simantic OK!
+ |
+ |========================================
+ */
+
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    /*
-     | WARNING:
-     |----------------------------------------
-     | HELPER for newbies
-     |----------------------------------------
-     | Route::<http>('<routing>',[<controller::class>, | '<method grab from controller>'])->name('<name-reference>');
-     |========================================
-     | NOTE: awasin dibagian penamaan routing dia prular atau tidak,
-     |keep simantic OK!
-     |
-     |========================================
-     */
-
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-
     Route::get('users', [UserController::class, 'index'])->name('user.index');
     Route::post('users', [UserController::class, 'store'])->name('user.index');
     Route::get('users/create', [UserController::class, 'create'])->name('user.create');
@@ -54,9 +53,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('users/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
-
     Route::get('students', [StudentController::class, 'index'])->name('student.index');
 }); //End Group Admin Middleware
 
-
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

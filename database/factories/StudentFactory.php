@@ -17,9 +17,9 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
             'nis' => $this->faker->unique()->numberBetween(100000000, 999999999),
-            'grade' => $this->faker->randomElement(['10', '11', '12']),
+            'name' => $this->faker->name,
+            'grade' => $this->faker->randomElement(['X', 'XI', 'XII']),
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => bcrypt('password'),

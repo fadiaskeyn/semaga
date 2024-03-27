@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -36,7 +35,7 @@ class UserSeeder extends Seeder
                 'address' => 'Tegal Besar V 41',
                 'role' => 'user',
                 'status' => 'active',
-            ]
+            ],
         ]);
     }
 }

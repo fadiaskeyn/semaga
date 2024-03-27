@@ -2,13 +2,9 @@
 
 namespace Database\Seeders;
 
-namespace Database\Seeders;
-use App\Models\User;
-use App\Models\Student;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class StudentSeeder extends Seeder
 {
@@ -17,6 +13,15 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-Student::factory(5)->create();
+        DB::table('students')->insert([
+
+            'nis' => '0123456789',
+            'name' => 'Abubakar',
+            'grade' => 'XII',
+            'gender' => 'L',
+            'email' => 'abubakar@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+
     }
 }
