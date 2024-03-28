@@ -54,6 +54,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('students', [StudentController::class, 'index'])->name('student.index');
+    Route::get('students/create', [StudentController::class, 'create'])->name('student.create');
+    Route::post('students', [StudentController::class, 'store'])->name('student.index');
 }); //End Group Admin Middleware
 
 require __DIR__.'/auth.php';

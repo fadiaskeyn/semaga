@@ -1,6 +1,6 @@
 <x-app-layout>
     <a class="btn sm:btn-wide" href="{{route('admin.dashboard')}}">Back to dashboard</a>
-    <a class="btn sm:btn-wide btn-primary float-end text-xl" href="#TODO create user">ADD</a>
+    <a class="btn sm:btn-wide btn-primary float-end text-xl" href="{{route('student.create')}}">ADD</a>
     <div class="container bg-white overflow-auto rounded-lg m-4">
         <table class="table table-zebra my-4">
             <!-- head -->
