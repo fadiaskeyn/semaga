@@ -11,7 +11,9 @@ class Student extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
+
+    protected $primaryKey = 'nis';
 
     protected $hidden = [
         'password',

@@ -8,7 +8,7 @@
                         <a class="btn" href="{{route('user.index')}}">manajemen guru</a>
                         <a class="btn" href="#">manajemen mata pelajaran</a>
                         <a class="btn" href="#">manajemen kelas</a>
-                        <a class="btn" href="{{route('student.index')}}">manajemen siswa</a>
+                        <a class="btn" href="{{route('students.index')}}">manajemen siswa</a>
                     </aside>
                     <br>
                 </div>

@@ -53,9 +53,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('users/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
-    Route::get('students', [StudentController::class, 'index'])->name('student.index');
-    Route::get('students/create', [StudentController::class, 'create'])->name('student.create');
-    Route::post('students', [StudentController::class, 'store'])->name('student.index');
+    Route::get('students', [StudentController::class, 'index'])->name('students.index');
+    Route::get('students/create', [StudentController::class, 'create'])->name('students.create');
+    Route::post('students', [StudentController::class, 'store'])->name('students.index');
+    Route::get('students/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
+    Route::put('students/{id}', [StudentController::class, 'update'])->name('students.update');
+    Route::delete('students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
 }); //End Group Admin Middleware
 
 require __DIR__.'/auth.php';

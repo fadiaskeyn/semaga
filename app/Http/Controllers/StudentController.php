@@ -23,7 +23,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nis' => 'required',
+            'nis' => 'required|max:15',
             'name' => 'required',
             'grade' => 'required|in:X,XI,XII',
             'gender' => 'required|in:L,P',
@@ -36,7 +36,7 @@ class StudentController extends Controller
         if ($existingStudent) {
             return redirect()->back()->withInput()->with('error', 'NIS tidak digunakan!');
         }
-        $student = new Student([
+        $students = new Student([
             'nis' => $request->input('nis'),
             'name' => $request->input('name'),
             'grade' => $request->input('grade'),
@@ -45,19 +45,47 @@ class StudentController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
 
-        $student->save();
+        $students->save();
 
-        return redirect(route('student.index'))->with('success', 'Akun murid berhasil dibuat!');
+        return redirect(route('students.index'))->with('success', 'Akun murid berhasil dibuat!');
     }
 
-    public function update(Request $request, $id)
+    public function edit(string $id)
     {
-        //function update data
+        $students = Student::find($id);
+        // dd($students);
+
+        return view('admin.ManageStudents.edit-student', compact(['students']));
     }
 
-    public function destroy($id)
+    public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'grade' => 'required|in:X,XI,XII',
+            'gender' => 'required|in:L,P',
+            'email' => 'required|email',
+        ]);
 
-        // function delete data
+        $students = Student::find($id);
+
+        $students->update([
+            'name' => $request->name,
+            'grade' => $request->grade,
+            'gender' => $request->gender,
+            'email' => $request->email,
+        ]);
+
+        return redirect(route('students.index'))->with('success', 'Akun berhasil diperbaharui!');       //
+    }
+
+    public function destroy(string $id)
+    {
+        $students = Student::where('nis', $id)->delete();
+        if (! $students) {
+            return redirect()->route('students.index')->with('error', 'Student not found!');
+        }
+
+        return redirect(route('students.index'))->with('success', 'Akun Murid berhasil dihapus!');
     }
 }

@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="card w-full bg-base-100 shadow-xl my-4">
-        <h1 class="p-4 text-3xl font-bold">ADD USER</h1>
+        <h1 class="p-4 text-3xl font-bold">EDIT AKUN GURU</h1>
         <div class="card-body">
             @if($errors->any())
             <div role="alert" class="alert alert-error">
