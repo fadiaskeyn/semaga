@@ -81,11 +81,13 @@ class StudentController extends Controller
 
     public function destroy(string $id)
     {
-        $students = Student::where('nis', $id)->delete();
+        $students = Student::find($id);
         if (! $students) {
-            return redirect()->route('students.index')->with('error', 'Student not found!');
+            return redirect()->route('students.index')->with('error', 'Gagal menghapus murid!');
         }
 
-        return redirect(route('students.index'))->with('success', 'Akun Murid berhasil dihapus!');
+        $students->delete();
+
+        return redirect(route('students.index'))->with('success', 'Akun berhasil dihapus!');
     }
 }

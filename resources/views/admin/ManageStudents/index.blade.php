@@ -26,21 +26,11 @@
                     <td class="flex gap-2">
                         <a class="btn btn-warning text-md my-1" href="/students/{{$student->nis}}/edit">Edit</a>
                         <!-- Open the modal using ID.showModal() method -->
-                        <button class="btn btn-error text-md my-1" onclick="my_modal_2.showModal()">Delete</button>
-                        <dialog id="my_modal_2" class="modal">
-                            <div class="modal-box">
-                                <h3 class="font-bold text-4xl text-error">WARNING!</h3>
-                                <p class="py-4">Apakah anda yakin menghapus ini ?</p>
                                 <form action="{{route('students.destroy', $student->nis)}}" method="POST">
+                                    @method('DELETE')
                                     @csrf
-                                    @method('delete')
-                                    <input type="submit" class="btn sm:btn-wide btn-error text-md my-1 " value="Delete">
+                                    <input type="submit" class="btn btn-error text-md my-1 " value="Delete">
                                 </form>
-                                <form method="dialog">
-                                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                </form>
-                            </div>
-                        </dialog>
                     </td>
                 </tr>
                 @endforeach
