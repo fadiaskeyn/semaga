@@ -20,9 +20,9 @@
                     <td>{{$transgression->name}}</td>
                     <td>{{$transgression->point}}</td>
                     <td class="flex gap-2">
-                        <a class="btn btn-warning text-md my-1" href="#route edit">Edit</a>
+                        <a class="btn btn-warning text-md my-1" href="{{ route('transgressions.edit', $transgression->id) }}">Edit</a>
                         <!-- Open the modal using ID.showModal() method -->
-                        <form action="#route delete" method="POST">
+                        <form action="{{ route('transgressions.destroy', $transgression->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <input type="submit" class="btn btn-error text-md my-1 " value="Delete">

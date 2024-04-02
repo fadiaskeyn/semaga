@@ -41,20 +41,37 @@ class TransgressionController extends Controller
     public function edit(string $id)
     {
         $data = Transgression::find($id);
-        dd($data);
 
-        return 'edit';
+        return view('admin.TransgressionRegistry.edit', compact(['data']));
     }
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'point' => 'required',
+        ]);
 
-        return 'update';
+        $data = Transgression::find($id);
+
+        $data->update([
+            'name' => $request->name,
+            'point' => $request->point,
+        ]);
+
+        return redirect(route('transgressions.index'))->with('success', 'Pelanggaran berhasil dibuat!');
     }
 
     public function destroy(string $id)
     {
 
-        return 'destroy';
+        $data = Transgression::find($id);
+        if (! $data) {
+            return redirect()->route('transgressions.index')->with('error', 'Gagal menghapus pelanggaran!');
+        }
+
+        $data->delete();
+
+        return redirect(route('transgressions.index'))->with('success', 'Pelanggaran berhasil dihapus!');
     }
 }
