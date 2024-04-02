@@ -9,6 +9,7 @@
                         <a class="btn" href="#">manajemen mata pelajaran</a>
                         <a class="btn" href="#">manajemen kelas</a>
                         <a class="btn" href="{{route('students.index')}}">manajemen siswa</a>
+                        <a class="btn" href="{{route('transgressions.index')}}">mengelola pelanggaran</a>
                     </aside>
                     <br>
                 </div>

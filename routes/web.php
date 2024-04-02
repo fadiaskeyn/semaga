@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TransgressionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('students/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
     Route::put('students/{id}', [StudentController::class, 'update'])->name('students.update');
     Route::delete('students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
+
+    //Transgression
+    Route::resource('transgressions', TransgressionController::class)->except([
+        'show',
+    ]);
 }); //End Group Admin Middleware
 
 require __DIR__.'/auth.php';
