@@ -23,26 +23,13 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    //user Admin + Staff
-    Route::get('users', [UserController::class, 'index'])->name('user.index');
-    Route::post('users', [UserController::class, 'store'])->name('user.index');
-    Route::get('users/create', [UserController::class, 'create'])->name('user.create');
-    Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-    Route::put('users/{id}', [UserController::class, 'update'])->name('user.update');
-    Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
+    //user
+    Route::resource('users', UserController::class)->except(['show']);
     //student
-    Route::get('students', [StudentController::class, 'index'])->name('students.index');
-    Route::get('students/create', [StudentController::class, 'create'])->name('students.create');
-    Route::post('students', [StudentController::class, 'store'])->name('students.index');
-    Route::get('students/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
-    Route::put('students/{id}', [StudentController::class, 'update'])->name('students.update');
-    Route::delete('students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
-
+    Route::resource('students', StudentController::class)->except(['show']);
     //Transgression
-    Route::resource('transgressions', TransgressionController::class)->except([
-        'show',
-    ]);
+    Route::resource('transgressions', TransgressionController::class)->except(['show']);
 }); //End Group Admin Middleware
 
 require __DIR__.'/auth.php';

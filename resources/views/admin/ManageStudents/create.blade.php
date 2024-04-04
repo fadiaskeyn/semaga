@@ -18,13 +18,15 @@
                 <input required value="{{old('nis')}}" name="nis" type="text" placeholder="Masukkan Nis | maksimal 15 digit" class="input input-bordered w-full my-2 sm:text-xl" autofocus />
                 <input required value="{{old('name')}}" name="name" type="text" placeholder="Masukan Nama Lengkap" class="input input-bordered w-full my-2 sm:text-xl" />
                 <select name="grade" class="select select-bordered w-full my-2 sm:text-xl">
-                    <option value="X {{old('grade')}}" selected class="sm:text-xl">X</option>
-                    <option value="XI {{old('grade')}}" class="sm:text-xl">XI</option>
-                    <option value="XII {{old('grade')}}" class="sm:text-xl">XII</option>
+                    <option value="" selected>Tentukan Kelas</option>
+                    <option value="X" {{old('grade') == 'X' ? 'selected' : '' }} class="sm:text-xl">X</option>
+                    <option value="XI" {{old('grade') == 'XI' ? 'selected' : '' }} class="sm:text-xl">XI</option>
+                    <option value="XII" {{old('grade') == 'XII' ? 'selected' : ''}} class="sm:text-xl">XII</option>
                 </select>
                 <select name="gender" class="select select-bordered w-full my-2 sm:text-xl">
-                    <option value="L {{old('gender')}}" selected class="sm:text-xl">L</option>
-                    <option value="P {{old('gender')}}" class="sm:text-xl">P</option>
+                    <option value="" selected>Jenis kelamin</option>
+                    <option value="L" {{old('gender') == 'L' ? 'selected' : ''}}class="sm:text-xl">L</option>
+                    <option value="P" {{old('gender') == 'P' ? 'selected' : ''}}class="sm:text-xl">P</option>
                 </select>
                 <input required value="{{old('password')}}" name="password" type="password" placeholder="Masukkan Password | Minimal 8 karakter [A-Z-0-9]" class="input input-bordered w-full my-2 sm:text-xl" />
                 <input required value="{{old('email')}}" name="email" type="text" placeholder="Masukkan email contoh@gmail.com" class="input input-bordered w-full my-2 sm:text-xl" />
