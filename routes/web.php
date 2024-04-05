@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TransgressionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MapelController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -38,6 +39,27 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('students/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
     Route::put('students/{id}', [StudentController::class, 'update'])->name('students.update');
     Route::delete('students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
+
+    //mapel
+
+    // Route untuk menampilkan daftar mapel
+    Route::get('/mapels', [MapelController::class, 'index'])->name('mapels.index');
+
+    // Route untuk menampilkan form pembuatan mapel baru
+    Route::get('/mapels/create', [MapelController::class, 'create'])->name('mapels.create');
+
+    // Route untuk menyimpan mapel baru yang dibuat
+    Route::post('/mapels', [MapelController::class, 'store'])->name('mapels.store');
+
+    // Route untuk menampilkan form edit mapel
+    Route::get('/mapels/{id}/edit', [MapelController::class, 'edit'])->name('mapels.edit');
+
+    // Route untuk menyimpan perubahan pada mapel yang diedit
+    Route::put('/mapels/{id}', [MapelController::class, 'update'])->name('mapels.update');
+
+    // Route untuk menghapus mapel
+    Route::delete('/mapels/{id}', [MapelController::class, 'destroy'])->name('mapels.destroy');
+
 
     //Transgression
     Route::resource('transgressions', TransgressionController::class)->except([
