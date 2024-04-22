@@ -13,19 +13,22 @@
                 </ul>
             </div>
             @endif
-            <form action="/mapels/{{$mapels->id}}" method="POST" class="flex flex-col">
-                @csrf
-                @method('PUT')
 
-                <label class="input input-bordered flex items-center gap-2">
-                    Mapel
-                    <input value="{{ $mapels->mapel}}" mapel="mapel" type="text" class="grow" autofocus />
-                </label>
-
-                <div class="justify-center my-2">
-                    <a class="btn btn-block my-2" href="{{route('mapels.index')}}">Cancel</a>
-                    <button type="submit" class="btn btn-block btn-primary my-2">SUBMIT</button>
-                </div>
+                <form action="/mapels/{{$mapels->id}}" method="POST" class="flex flex-col">
+                    @csrf
+                    @method('PUT')
+                
+                    <label class="input input-bordered flex items-center gap-2">
+                        Mapel
+                        <!-- Perbaikan: ganti mapel="mapel" menjadi name="mapel" -->
+                        <input value="{{ $mapels->mapel}}" name="mapel" type="text" class="grow" autofocus />
+                    </label>
+                
+                    <div class="justify-center my-2">
+                        <a class="btn btn-block my-2" href="{{route('mapels.index')}}">Cancel</a>
+                        <button type="submit" class="btn btn-block btn-primary my-2">SUBMIT</button>
+                    </div>
+                </form>                
 
             </form>
         </div>
