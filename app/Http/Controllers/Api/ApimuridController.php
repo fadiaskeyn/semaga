@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Validator;
 
 class ApimuridController extends Controller
 {
+
+    public function getData(){
+$data = Student::all();
+return response()->json($data);
+    }
+
+
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -38,31 +45,52 @@ class ApimuridController extends Controller
         ]);
     }
 
+
     public function login(Request $request)
     {
-        if (! Auth::guard('students')->attempt($request->only('nis', 'password'))) {
-            return response()->json([
-                'message' => 'Unauthorized'
-            ], 401);
-        }
         $user = Auth::guard('students')->user();
-        $token = $user->createToken('auth_token')->plainTextToken;
+
+        if (!$user) {
+            if (!Auth::guard('students')->attempt($request->only('nis', 'password'))) {
+                return response()->json([
+                    'message' => 'Data Tidak Ditemukan'
+                ], 401);
+            }
+            $user = Auth::guard('students')->user();
+        }
+
+        // Mengecek apakah pengguna sudah memiliki token sebelumnya
+        if ($user->tokens()->count() > 0) {
+            $token = $user->tokens()->first()->token;
+        } else {
+            // Jika pengguna belum memiliki token sebelumnya, maka buat token baru
+            $token = $user->createToken('auth_token')->plainTextToken;
+        }
+
         return response()->json([
             'message' => 'Login success',
             'access_token' => $token,
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
+            'data' => $user
         ]);
     }
+
 
     public function logout()
     {
-        $user =  Auth::guard('students')->user()->tokens()->delete();
-
-        if($user){
-            $user->token()->delete();
+        $user = Auth::guard('students')->user();
+        if ($user) {
+            $user->tokens()->delete();
+            return response()->json([
+                'message' => 'Logout success'
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'User not authenticated'
+            ], 401);
         }
-        return response()->json([
-            'message' => 'logout success'
-        ]);
+
+
     }
+
 }

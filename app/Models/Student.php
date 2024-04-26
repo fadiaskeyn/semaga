@@ -12,6 +12,7 @@ class Student extends Model implements AuthenticatableContract
 {
     use HasApiTokens, HasFactory, Notifiable, Authenticatable;
 
+    // protected $tokenName = 'api_token';
     protected $guarded = [];
 
     protected $primaryKey = 'nis';

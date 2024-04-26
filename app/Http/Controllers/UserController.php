@@ -46,7 +46,6 @@ class UserController extends Controller
             'role' => $request->input('role'),
             'status' => $request->input('status'),
         ]);
-
         $users->save();
 
         return redirect(route('user.index'))->with('success', 'User created successfully!');
@@ -55,6 +54,8 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
+
+
     public function show(string $id)
     {
         //

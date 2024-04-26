@@ -9,9 +9,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::all();
-
-        // $students->dd(); -- debug atribute
+        $students = Student::paginate(5);
         return view('admin.ManageStudents.index', compact('students'));
     }
 
@@ -57,6 +55,7 @@ class StudentController extends Controller
 
         return view('admin.ManageStudents.edit-student', compact(['students']));
     }
+
 
     public function update(Request $request, string $id)
     {
