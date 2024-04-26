@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $users = User::paginate(5);
@@ -17,12 +14,9 @@ class UserController extends Controller
         return view('admin.ManageUsers.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('admin.ManageUsers.create-users');
+        return view('admin.ManageUsers.create');
     }
 
     public function store(Request $request)
@@ -48,9 +42,10 @@ class UserController extends Controller
         ]);
         $users->save();
 
-        return redirect(route('user.index'))->with('success', 'User created successfully!');
+        return redirect(route('users.index'))->with('success', 'User berhasil dibuat!');
     }
 
+<<<<<<< HEAD
     /**
      * Display the specified resource.
      */
@@ -64,16 +59,15 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+=======
+>>>>>>> 9ce754da4c455c06167a487c37c03ab886d4b04a
     public function edit(string $id)
     {
         $users = User::find($id);
 
-        return view('admin.ManageUsers.edit-users', compact(['users']));
+        return view('admin.ManageUsers.edit', compact(['users']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -86,6 +80,7 @@ class UserController extends Controller
         ]);
 
         $users = User::find($id);
+
         $users->update([
             'name' => $request->name,
             'username' => $request->username,
@@ -95,16 +90,13 @@ class UserController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect(route('user.index'))->with('success', 'User updated successfully!');       //
+        return redirect(route('users.index'))->with('success', 'User berhasil diperbaharui!');       //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        $user = User::find($id)->delete();
+        User::find($id)->delete();
 
-        return redirect(route('user.index'))->with('success', 'User deleted successfully!');       //
+        return redirect(route('users.index'))->with('success', 'User berhasil dihapus !');       //
     }
 }

@@ -13,7 +13,7 @@
                 </ul>
             </div>
             @endif
-            <form action="/students/{{$students->nis}}" method="POST" class="flex flex-col">
+            <form action="{{route( 'students.update', $students->id )}}" method="POST" class="flex flex-col">
                 @csrf
                 @method('PUT')
 
@@ -35,8 +35,8 @@
                 <label class="input input-bordered flex items-center gap-2">
                     Gender
                     <select name="gender" class="grow">
-                        <option value="L" {{ old('gender', $students->gender)}}>L</option>
-                        <option value="P" {{ old('gender', $students->gender)}}>P</option>
+                        <option value="L" {{ old('gender', $students->gender) == 'L' ? 'selected' : ''}}>L</option>
+                        <option value="P" {{ old('gender', $students->gender) == 'P' ? 'selected' : ''}}>P</option>
                     </select>
                 </label>
 

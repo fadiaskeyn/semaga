@@ -1,6 +1,5 @@
 <x-app-layout>
-    <a class="btn sm:btn-wide" href="{{route('admin.dashboard')}}">Back to dashboard</a>
-    <a class="btn sm:btn-wide btn-primary float-end text-xl" href="{{route('user.create')}}">ADD</a>
+    <a class="btn sm:btn-wide btn-primary float-end text-xl" href="{{route('users.create')}}">Tambah</a>
     <div class="container bg-white overflow-auto rounded-lg m-4">
         <table class="table table-zebra my-4">
             <!-- head -->
@@ -24,9 +23,9 @@
                     <td>{{$user->role}}</td>
                     <td>{{$user->address}}</td>
                     <td class="flex gap-2">
-                        <a class="btn btn-warning text-md my-1" href="/users/{{$user->id}}/edit">Edit</a>
+                        <a class="btn btn-warning text-md my-1" href="{{ route('users.edit', $user->id) }}">Edit</a>
                         <!-- Open the modal using ID.showModal() method -->
-                        <form action="{{ route('user.destroy', $user->id ) }}" method="POST">
+                        <form action="{{ route('users.destroy', $user->id ) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <input type="submit" class="btn btn-error text-md my-1 " value="Delete">
@@ -39,4 +38,5 @@
         </table>
     </div>
     {{$users->links()}}
+    <a class="btn sm:btn-wide" href="{{route('admin.dashboard')}}">Kembali ke beranda</a>
 </x-app-layout>

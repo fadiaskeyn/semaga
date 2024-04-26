@@ -1,21 +1,26 @@
 <?php
+
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Auth\Authenticatable;
 
 class Student extends Model implements AuthenticatableContract
 {
-    use HasApiTokens, HasFactory, Notifiable, Authenticatable;
+    use Authenticatable, HasApiTokens, HasFactory, Notifiable;
 
+<<<<<<< HEAD
     // protected $tokenName = 'api_token';
     protected $guarded = [];
 
     protected $primaryKey = 'nis';
+=======
+    protected $guarded = ['id'];
+>>>>>>> 9ce754da4c455c06167a487c37c03ab886d4b04a
 
     protected $hidden = [
         'password',
