@@ -15,7 +15,8 @@
                 {{-- looping row --}}
                 @foreach ($mapels as $mapel)
                 <tr>
-                    <th>{{$mapel->id}}</th>
+                    {{-- <th>{{$mapel->id}}</th> --}}
+                    <th>{{ $loop->iteration }}</th>
                     <td>{{$mapel->mapel}}</td>
                     <td class="flex gap-2">
                         <a class="btn btn-warning text-md my-1" href="/mapels/{{$mapel->id}}/edit">Edit</a>
