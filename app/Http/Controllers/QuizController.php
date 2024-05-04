@@ -84,6 +84,9 @@ class QuizController extends Controller
     $set->save();
     }
 
+    public function addquestion(){
+        
+    }
 
     public function destroy(string $id){
         try {

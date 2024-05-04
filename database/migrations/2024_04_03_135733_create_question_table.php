@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('sad');
             $table->string('question');
-            $table->string('option');
+            $table->json('options'); // Menggunakan kolom json untuk menyimpan opsi dalam bentuk array
+            $table->unsignedBigInteger('quiz_id'); // Menggunakan kolom unsignedBigInteger untuk kunci luar ke tabel 'quizzes'
+            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade'); // Membuat kunci luar ke tabel 'quizzes' dengan tindakan penghapusan otomatis (cascade)
             $table->string('correct_answer');
+            $table->timestamps(); // Kolom untuk menyimpan waktu pembuatan dan pembaruan record
         });
     }
+
 
     /**
      * Reverse the migrations.

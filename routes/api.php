@@ -29,8 +29,9 @@ Route::post('logout', [ApimuridController::class,'logout'])->name('api_logout')-
 
 //ini route buat ujian dan lainnya, jangan di campur ajgggg
 Route::middleware('auth:sanctum')->group(function () {
-Route::get('student/{$id}', [ApimuridController::class,'student'])->name('student');
+Route::get('student/{$id}', [ApimuridController::class,'student']);
 Route::get('quiz',[ApiUjianController::class,'getUjian']);
+Route::get('quiz/send', [ApiUjianController::class,'#'])->name('user');
 
 });
 

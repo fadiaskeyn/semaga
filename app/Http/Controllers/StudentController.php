@@ -10,10 +10,6 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::paginate(5);
-<<<<<<< HEAD
-=======
-
->>>>>>> 9ce754da4c455c06167a487c37c03ab886d4b04a
         return view('admin.ManageStudents.index', compact('students'));
     }
 

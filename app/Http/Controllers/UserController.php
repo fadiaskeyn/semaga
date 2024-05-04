@@ -45,22 +45,7 @@ class UserController extends Controller
         return redirect(route('users.index'))->with('success', 'User berhasil dibuat!');
     }
 
-<<<<<<< HEAD
-    /**
-     * Display the specified resource.
-     */
 
-
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-=======
->>>>>>> 9ce754da4c455c06167a487c37c03ab886d4b04a
     public function edit(string $id)
     {
         $users = User::find($id);

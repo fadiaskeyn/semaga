@@ -37,8 +37,9 @@ class QuizProvider extends ServiceProvider
             if($quiz->quizEnd->lt(now()))
                 $quiz->update(['status' => 'off']);
         });
+
     }
 
-    
+
 
 }

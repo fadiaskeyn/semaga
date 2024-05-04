@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('code_quiz')->nullable();
             $table->string('create_by')->nullable();
-            $table->dateTime('quiz_date')->nullable();
+            $table->date('quiz_date')->nullable();
             $table->string('course')->nullable();
             $table->time('start')->nullable();
             $table->time('end')->nullable();
