@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'SIUJI') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,39 +17,102 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        @include('layouts.navigation')
-        <!-- Page Heading -->
-        @if (isset($header))
-        <header class="bg-white dark:bg-gray-800 shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+<body class="bg-neutral-100">
+    <div class="drawer lg:drawer-open">
+        <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+            <!-- Navbar -->
+            <div class="w-full navbar bg-secondary bg-opacity-10">
+                <div class="text-white flex-none lg:hidden tooltip tooltip-bottom" data-tip="menu">
+                    <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </label>
+                </div>
+                <label class="flex-1 px-2 mx-2 font-bold text-xs sm:text-2xl text-primary">
+                    <div class="hidden sm:inline-flex text-sm breadcrumbs">
+                        <ul>
+                            <li><a>Dashboard</a></li>
+                            <li><a>Data</a></li>
+                        </ul>
+                    </div>
+                </label>
+                <div class="flex-none lg:block">
+                    <ul class="menu menu-horizontal">
+                        {{-- Navbar menu content here --}}
+                        <div class="flex-none">
+                            <ul class="menu menu-horizontal px-1">
+                                <li>
+                                    <details>
+                                        <summary class="font-bold text-primary"> {{Auth::user()->name}}</summary>
+                                        <ul class="p-2 bg-base-100 rounded-t-none">
+                                            <li>
+                                                <x-dropdown-link :href="route('profile.edit')"> {{ __('Profile') }} </x-dropdown-link>
+                                            <li>
+                                                <!-- Authentication -->
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                                            this.closest('form').submit();">
+                                                        {{ __('Log Out') }}
+                                                    </x-dropdown-link>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </details>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
             </div>
-        </header>
-        @endif
-
-        <!-- Page Content -->
-        <main class="container mx-auto">
-            @if(session()->has('success'))
-            <div role="alert" class="alert alert-success flex">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span> {{ session('success')}} </span>
-            </div>
-            @elseif(session()->has('error'))
-            <div role="alert" class="alert alert-error flex">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span> {{ session('error')}} </span>
-            </div>
-            @endif
-
-            {{ $slot ?? '' }}
-
-        </main>
+            {{--MAIN PAGE--}}
+            <main>
+                <div class="p-2 rounded-xl">
+                    {{$slot ?? ''}}
+                </div>
+            </main>
+        </div>
+        {{-- Sidebar --}}
+        <div class="drawer-side shadow-lg">
+            <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+            <ul class="menu p-4 w-40 sm:w-80 min-h-full bg-secondary text-white">
+                <!-- Sidebar content here -->
+                <div class="flex border-b items-center p-2 mb-2">
+                    <img class="w-9 h-9" src="{{ asset('icons/small-logo.jpg') }}" alt="logo">
+                    <label class="font-bold text-sm w-36 m-2 hidden sm:block">SISTEM UJIAN SMAN 3 JEMBER</label>
+                </div>
+                <div>
+                    <li>
+                        <a class="my-2" href="{{ route('admin.dashboard')}}">
+                            <img class="w-7 h-7" src="{{ asset('icons/dashboard.png') }}" alt="">
+                            <span class="hidden sm:block">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <span class="hidden sm:flex">
+                            <img class="w-7 h-7" src="{{ asset('icons/Groups.png') }}" alt="">
+                            Data</span>
+                        <a class="my-2" href="{{route('students.index')}}">
+                            <span class="hidden sm:block mx-16">Murid</span>
+                        </a>
+                        <a class="my-2" href="{{ route('users.index') }}">
+                            <span class="hidden sm:block mx-16">Guru</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="my-2">
+                            <img class="w-7 h-7" src="{{ asset('icons/books.png') }}" alt="">
+                            <span class="hidden sm:block">Ujian</span>
+                        </a>
+                        <span class="hidden sm:block mx-16">Bank Soal</span>
+                        <span class="hidden sm:block mx-16">Pantau Ujian</span>
+                        <span class="hidden sm:block mx-16">Riwayat Ujian</span>
+                    </li>
+                </div>
+            </ul>
+        </div>
     </div>
 </body>
 
