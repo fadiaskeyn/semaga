@@ -30,14 +30,9 @@
                         </svg>
                     </label>
                 </div>
-                <label class="flex-1 px-2 mx-2 font-bold text-xs sm:text-2xl text-primary">
-                    <div class="hidden sm:inline-flex text-sm breadcrumbs">
-                        <ul>
-                            <li><a>Dashboard</a></li>
-                            <li><a>Data</a></li>
-                        </ul>
-                    </div>
-                </label>
+
+                @yield('breadcrumbs')
+
                 <div class="flex-none lg:block">
                     <ul class="menu menu-horizontal">
                         {{-- Navbar menu content here --}}
@@ -46,16 +41,16 @@
                                 <li>
                                     <details>
                                         <summary class="font-bold text-primary"> {{Auth::user()->name}}</summary>
-                                        <ul class="p-2 bg-base-100 rounded-t-none">
+                                        <ul class="bg-base-100 rounded-t-none">
                                             <li>
-                                                <x-dropdown-link :href="route('profile.edit')"> {{ __('Profile') }} </x-dropdown-link>
+                                                <x-dropdown-link :href="route('profile.edit')"> Profile </x-dropdown-link>
                                             <li>
                                                 <!-- Authentication -->
                                                 <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
                                                     <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                                             this.closest('form').submit();">
-                                                        {{ __('Log Out') }}
+                                                        Logout
                                                     </x-dropdown-link>
                                                 </form>
                                             </li>
@@ -106,7 +101,9 @@
                             <img class="w-7 h-7" src="{{ asset('icons/books.png') }}" alt="">
                             <span class="hidden sm:block">Ujian</span>
                         </a>
-                        <span class="hidden sm:block mx-16">Bank Soal</span>
+                        <a class="my-2" href="{{route('banks.index')}}">
+                            <span class="hidden sm:block mx-16">Bank Soal</span>
+                        </a>
                         <span class="hidden sm:block mx-16">Pantau Ujian</span>
                         <span class="hidden sm:block mx-16">Riwayat Ujian</span>
                     </li>

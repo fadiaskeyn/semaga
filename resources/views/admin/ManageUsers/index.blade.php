@@ -1,4 +1,8 @@
 <x-app-layout>
+    @section('breadcrumbs')
+    {{ Breadcrumbs::render('DataGuru') }}
+    @endsection
+
     <a class="btn sm:btn-wide btn-primary float-end text-xl" href="{{route('users.create')}}">Tambah</a>
     <div class="container bg-white overflow-auto rounded-lg m-4">
         <table class="table table-zebra my-4">

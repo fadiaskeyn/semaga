@@ -1,4 +1,8 @@
 <x-app-layout>
+    @section('breadcrumbs')
+    {{ Breadcrumbs::render('Dashboard1') }}
+    @endsection
+
     {{-- Layout --}}
     <div class="grid md:grid-cols-3 gap-2">
         <div class="grid md:flex md:flex-col gap-2 md:col-span-2">
@@ -23,7 +27,7 @@
                         <div class="flex gap-2 md:flex-col md:gap-3 text-white">
                             <img class="hidden md:block w-[30px]" src="{{ asset('icons/graduation-cap.png') }}" alt="student" />
                             <span class="font-semibold md:text-3xl">{{ $totalMurid }}</span>
-                            <span class="font-medium md:text-2xl">Siswa</span>
+                            <span class="font-medium md:text-2xl">Murid</span>
                         </div>
                     </div>
                     <div class="m-4 p-2 md:w-40 md:h-40 rounded-xl bg-gradient-to-tl from-cyan-500 to-secondary">

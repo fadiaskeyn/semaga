@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BankUjianController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\ProfileController;
@@ -31,6 +32,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('students', StudentController::class)->except(['show']);
     //mapel
     Route::resource('mapels', MapelController::class)->except(['show']);
+    //bank soal
+    Route::resource('banks', BankUjianController::class)->except(['show']);
 }); //Akhir dari group admin middleware
 
 require __DIR__.'/auth.php';
