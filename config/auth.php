@@ -47,9 +47,8 @@ return [
         ],
 
         'students' => [
-            'driver' => 'session', // Sesuaikan sesuai kebutuhan Anda
-            'provider' => 'students', // Gunakan provider untuk model Student
-        ],
+            'driver' => 'session v',
+            'provider' => 'students',         ],
     ],
 
     /*
