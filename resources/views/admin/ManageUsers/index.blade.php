@@ -10,6 +10,7 @@
             <thead>
                 <tr>
                     <th>id</th>
+                    <th>nip</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
@@ -22,6 +23,7 @@
                 @foreach ($users as $user)
                 <tr>
                     <th>{{$user->id}}</th>
+                    <th>{{$user->nip}}</th>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role}}</td>
@@ -38,7 +40,7 @@
                 </tr>
                 @endforeach
             </tbody>
-        <!--END tbody-->
+            <!--END tbody-->
         </table>
     </div>
     {{$users->links()}}

@@ -20,6 +20,9 @@ Breadcrumbs::for('Data', function (BreadcrumbTrail $trail) {
     $trail->push('Data');
 });
 
+Breadcrumbs::for('profile', function (BreadcrumbTrail $trail) {
+    $trail->push('Profile', route('profile.edit'));
+});
 // Dashboard > Data Murid
 Breadcrumbs::for('DataMurid', function (BreadcrumbTrail $trail) {
     $trail->parent('Data');
@@ -34,6 +37,10 @@ Breadcrumbs::for('DataGuru', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('ujian', function (BreadcrumbTrail $trail) {
     $trail->push('Ujian');
+});
+Breadcrumbs::for('Penjadwalan', function (BreadcrumbTrail $trail) {
+    $trail->push('Ujian');
+    $trail->push('Pendjadwalan', route('ujian.index'));
 });
 
 // Dashboard > Ujian > Bank Soal

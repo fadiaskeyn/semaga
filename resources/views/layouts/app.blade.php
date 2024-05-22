@@ -107,7 +107,12 @@
                         <a class="my-2" href="{{route('ujian.index')}}">
                             <span class="hidden sm:block mx-16">Penjadwalan</span>
                         </a>
-                        <span class="hidden sm:block mx-16">Riwayat Ujian</span>
+                        <a class="my-2" href="#">
+                            <span class="hidden sm:block mx-16">Riwayat Ujian</span>
+                        </a>
+                        {{-- <a class="my-2" href="{{ route('mapels.index') }}"> --}}
+                        {{-- <span class="hidden sm:block mx-16">Mapel</span> --}}
+                        {{-- </a> --}}
                     </li>
                 </div>
             </ul>

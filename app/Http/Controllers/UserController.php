@@ -28,7 +28,6 @@ class UserController extends Controller
             'password' => 'required|min:8',
             'address' => 'required',
             'role' => 'required|in:user,admin',
-            'status' => 'required|in:active,inactive',
         ]);
 
         $users = new User([
@@ -38,17 +37,16 @@ class UserController extends Controller
             'address' => $request->input('address'),
             'email' => $request->input('email'),
             'role' => $request->input('role'),
-            'status' => $request->input('status'),
         ]);
         $users->save();
 
         return redirect(route('users.index'))->with('success', 'User berhasil dibuat!');
     }
 
-
     public function edit(string $id)
     {
         $users = User::find($id);
+        dd($users);
 
         return view('admin.ManageUsers.edit', compact(['users']));
     }
@@ -61,7 +59,6 @@ class UserController extends Controller
             'email' => 'required|email',
             'address' => 'required',
             'role' => 'required',
-            'status' => 'required',
         ]);
 
         $users = User::find($id);
@@ -72,7 +69,6 @@ class UserController extends Controller
             'email' => $request->email,
             'address' => $request->address,
             'role' => $request->role,
-            'status' => $request->status,
         ]);
 
         return redirect(route('users.index'))->with('success', 'User berhasil diperbaharui!');       //

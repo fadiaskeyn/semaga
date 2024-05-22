@@ -40,13 +40,6 @@
                         <option value="admin" {{ old('status', $users->role) == 'inactive' ? 'selected' : '' }}>admin</option>
                     </select>
                 </label>
-                <label class="input input-bordered flex items-center gap-2">
-                    Status
-                    <select name=" status" class="grow">
-                        <option value="active" {{ old('status', $users->status) == 'active' ? 'selected' : '' }}>active</option>
-                        <option value="inactive" {{ old('status', $users->status) == 'inactive' ? 'selected' : '' }}>inactive</option>
-                    </select>
-                </label>
                 <div class="justify-center my-2">
                     <a class="btn btn-block my-2" href="{{route('users.index')}}">Cancel</a>
                     <button type="submit" class="btn btn-block btn-primary my-2">SUBMIT</button>
