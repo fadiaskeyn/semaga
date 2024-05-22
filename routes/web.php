@@ -1,19 +1,21 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BankUjianController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\QuizController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\BankUjianController;
+use App\Http\Controllers\DashboardController;
 
 // Disini pintu awal user untuk akses aplikasi kita (login)
 Route::get('/', function () {
     return view('auth.login');
 });
+
 
 // Disini adalah fitur profile user, mereka wajib login terlebih dahulu setelah itu baru dapat mengkaksesnya
 Route::middleware('auth')->group(function () {
@@ -44,13 +46,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //bank soal
     Route::resource('admin/banks', BankUjianController::class)->except(['show']);
 
+    Route::get('/admin/soal', [QuestionController::class,'index'])->name('quest.index');
 }); //Akhir dari group admin middleware
 
 // Setelah berhasil login, user akan diarahkan jika bukan admin akan masuk ke alur ini
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index']);
-
-    // Penjadwalan
     Route::get('user/ujian', [QuizController::class, 'index']);
     Route::get('user/{id}/ujian', [QuizController::class, 'index']);
 }); // Akhir dari group user middleware

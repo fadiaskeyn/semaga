@@ -10,7 +10,7 @@
         <div>
           <h5
             class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-            Data Ujian
+            Soal yang Dibuat Oleh {{ Auth::User()->name }}
           </h5>
           <p class="block mt-1 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
           </p>
@@ -56,33 +56,30 @@
       <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
         <thead class="bg-gray-50">
           <tr>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Judul</th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Mata Pelajaran</th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Tanggal</th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Durasi</th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status</th>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Pertanyaan</th>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900"> Jawaban Benar</th>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900"> Nilai </th>
             <th scope="col" class="px-6 py-4 font-medium text-gray-900">Action</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-            @foreach($data as $quiz)
+            @foreach($data as $question)
             <tr class="hover:bg-gray-50">
                 <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                    {{ $quiz->title }}
+                    {{ $question->question }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ $quiz->course }}
+                    {{ $question->correct_answer }}
                 </td>
-
-                <td class="px-6 py-4">{{ \Carbon\Carbon::parse($quiz->quiz_date)->locale('id')->translatedFormat('l, j F Y') }}</td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4">{{ $question->score }}</td>
+                {{--  <td class="px-6 py-4">
                     <div class="flex gap-2">
                         <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-xs font-semibold text-violet-600">
                             {{ $durasis[$loop->index] }}
                         </span>
                     </div>
-                </td>
-                <td class="px-6 py-4">
+                </td>  --}}
+                {{--  <td class="px-6 py-4">
                     <div class="flex gap-2">
                             <span class="inline-flex items-center gap-1 rounded-full
                             @if($quiz->status == 'off') bg-red-50 text-red-600 @else bg-green-50 text-green-600 @endif
@@ -93,10 +90,10 @@
                                 {{ $quiz->status }}
                             </span>
                     </div>
-                </td>
+                </td>  --}}
             <td class="px-6 py-4">
               <div class="flex justify-start gap-4">
-                <a x-data="{ tooltip: 'Delete' }" href="/ujian/delete/{{ $quiz->id }}">
+                <a x-data="{ tooltip: 'Delete' }" href="/ujian/delete/{{ $question->id }}">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -157,8 +154,8 @@
   </div>
 </x-app-layout>
 </section>
-@include('components.modal.modal-ujian')
-@include('components.modal.modal-ujian-edit')
+{{--  @include('components.modal.modal-ujian')  --}}
+{{--  @include('components.modal.modal-ujian-edit')  --}}
 @push('script')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
