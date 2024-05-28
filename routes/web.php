@@ -7,6 +7,7 @@ use App\Http\Controllers\TransgressionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\BankUjianController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -24,7 +25,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-<<<<<<< Updated upstream
+
     //user Admin + Staff
     Route::get('users', [UserController::class, 'index'])->name('user.index');
     Route::post('users', [UserController::class, 'store'])->name('user.index');
@@ -69,7 +70,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 }); //End Group Admin Middleware
 
 require __DIR__.'/auth.php';
-=======
+(function () {
     Route::resource('users', UserController::class)->except(['show']);
     //student
     Route::resource('students', StudentController::class)->except(['show']);
@@ -77,7 +78,7 @@ require __DIR__.'/auth.php';
     Route::resource('mapels', MapelController::class)->except(['show']);
     //bank soal
     Route::resource('banks', BankUjianController::class)->except(['show']);
-    
+
     Route::get('/createBank', [BankUjianController::class, 'create'])->name('createBank');
 
 }); //Akhir dari group admin middleware
@@ -87,7 +88,7 @@ require __DIR__.'/auth.php';
 Route::get('coba', function () {
     return view('admin.BankUjian.coba');
 });
-// alhir route coba coba
+// akhir route coba coba
 
 require __DIR__.'/auth.php';
->>>>>>> Stashed changes
+
