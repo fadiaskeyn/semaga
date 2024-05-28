@@ -42,9 +42,11 @@ Breadcrumbs::for('BankSoal', function (BreadcrumbTrail $trail) {
     $trail->push('Bank Soal', route('banks.index'));
 });
 
+
 // Dashboard > Ujian > Bank Soal > Buat Bank Soal
 Breadcrumbs::for('BuatBankSoal', function (BreadcrumbTrail $trail) {
     $trail->parent('ujian');
     $trail->push('Bank Soal', route('banks.index'));
     $trail->push('Buat Bank Soal', route('banks.create'));
 });
+

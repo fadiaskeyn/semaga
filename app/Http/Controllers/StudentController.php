@@ -9,20 +9,20 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::all();
+        $students = Student::paginate(5);
 
-        // $students->dd(); -- debug atribute
         return view('admin.ManageStudents.index', compact('students'));
     }
 
     public function create()
     {
-        return view('admin.ManageStudents.create-student');
+        return view('admin.ManageStudents.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            // TODO ad id for param
             'nis' => 'required|max:15',
             'name' => 'required',
             'grade' => 'required|in:X,XI,XII',
@@ -55,7 +55,7 @@ class StudentController extends Controller
         $students = Student::find($id);
         // dd($students);
 
-        return view('admin.ManageStudents.edit-student', compact(['students']));
+        return view('admin.ManageStudents.edit', compact(['students']));
     }
 
     public function update(Request $request, string $id)

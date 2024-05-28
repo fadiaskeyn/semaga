@@ -19,7 +19,11 @@ class BankUjianController extends Controller
      */
     public function create()
     {
+
         return view('admin.BankUjian.createBank');
+
+        //
+
     }
 
     /**
@@ -27,6 +31,7 @@ class BankUjianController extends Controller
      */
     public function store(Request $request)
     {
+
         // $request->validate([
         //     'nama' => 'required',
         //     'deskripsi' => 'required',
@@ -37,6 +42,9 @@ class BankUjianController extends Controller
 
         // return redirect()->route('bank_ujian.index')
         //     ->with('success', 'Bank ujian berhasil dibuat.');
+
+        //
+
     }
 
     /**
@@ -44,7 +52,11 @@ class BankUjianController extends Controller
      */
     public function show(BankUjianController $bankUjianController)
     {
+
         return view('admin.BankUjian.show', compact('bankUjian'));
+
+        //
+
     }
 
     /**
@@ -52,7 +64,11 @@ class BankUjianController extends Controller
      */
     public function edit(BankUjianController $bankUjianController)
     {
+
         return view('admin.BankUjian.edit', compact('bankUjian'));
+
+        //
+
     }
 
     /**
@@ -60,6 +76,7 @@ class BankUjianController extends Controller
      */
     public function update(Request $request, BankUjianController $bankUjianController)
     {
+
         // $request->validate([
         //     'nama' => 'required',
         //     'deskripsi' => 'required',
@@ -70,6 +87,9 @@ class BankUjianController extends Controller
 
         // return redirect()->route('bank_ujian.index')
         //     ->with('success', 'Bank ujian berhasil diperbarui.');
+
+        //
+
     }
 
     /**
@@ -77,10 +97,12 @@ class BankUjianController extends Controller
      */
     public function destroy(BankUjianController $bankUjianController)
     {
+
         // $bankUjian->delete();
 
         // return redirect()->route('bank_ujian.index')
         //     ->with('success', 'Bank ujian berhasil dihapus.');
     }
 }
+
 

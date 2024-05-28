@@ -16,7 +16,8 @@ return new class extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
 
-            $table->string('nis')->primary();
+            $table->id();
+            $table->string('nis');
             $table->string('name');
             $table->enum('grade', ['X', 'XI', 'XII']);
             $table->enum('gender', ['L', 'P']);

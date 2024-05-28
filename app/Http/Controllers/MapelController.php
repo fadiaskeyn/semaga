@@ -17,7 +17,7 @@ class MapelController extends Controller
 
     public function create()
     {
-        return view('admin.ManageMapel.create-mapel');
+        return view('admin.ManageMapel.create');
     }
 
     public function store(Request $request)
@@ -40,7 +40,7 @@ class MapelController extends Controller
         $mapels = Mapel::find($id);
         // dd($mapels);
 
-        return view('admin.ManageMapel.edit-Mapel', compact(['mapels']));
+        return view('admin.ManageMapel.edit', compact(['mapels']));
     }
 
     public function update(Request $request, string $id)

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Student;
-use App\Models\Transgression;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,17 +13,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        /**
+         * registry seeders
+         * loaction : database/seeders/*.php
+         */
         $this->call([
             UserSeeder::class,
             StudentSeeder::class,
-            TransgressionSeeder::class,
         ]);
 
-        User::factory(5)->create();
-        Student::factory(3)->create();
-        // @ this factory if you want random transgression
-        // already have factory
-        // Transgression::factory(5)->create();
+        /* *
+         * send random data from factory/factories to database
+         * loaction : database/factories/*.php
+         */
+        User::factory(10)->create();
+        Student::factory(27)->create();
 
     }
 }

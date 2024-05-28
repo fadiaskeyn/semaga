@@ -13,7 +13,7 @@
                 </ul>
             </div>
             @endif
-            <form action="/users/{{$users->id}}" method="POST" class="flex flex-col">
+            <form action="{{route ('users.update', $users->id)}}" method="POST" class="flex flex-col">
                 @csrf
                 @method('PUT')
                 <label class="input input-bordered flex items-center gap-2">
@@ -48,7 +48,7 @@
                     </select>
                 </label>
                 <div class="justify-center my-2">
-                    <a class="btn btn-block my-2" href="{{route('user.index')}}">Cancel</a>
+                    <a class="btn btn-block my-2" href="{{route('users.index')}}">Cancel</a>
                     <button type="submit" class="btn btn-block btn-primary my-2">SUBMIT</button>
                 </div>
             </form>
