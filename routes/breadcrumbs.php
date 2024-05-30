@@ -38,6 +38,7 @@ Breadcrumbs::for('DataGuru', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('ujian', function (BreadcrumbTrail $trail) {
     $trail->push('Ujian');
 });
+
 Breadcrumbs::for('Penjadwalan', function (BreadcrumbTrail $trail) {
     $trail->push('Ujian');
     $trail->push('Pendjadwalan', route('ujian.index'));
@@ -47,4 +48,10 @@ Breadcrumbs::for('Penjadwalan', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('BankSoal', function (BreadcrumbTrail $trail) {
     $trail->parent('ujian');
     $trail->push('Bank Soal', route('banks.index'));
+});
+
+// Dashboard > Ujian > Bank Soal > Buat Soal
+Breadcrumbs::for('BuatBankSoal', function (BreadcrumbTrail $trail) {
+    $trail->parent('BankSoal');
+    $trail->push('Buat Bank Soal', route('banks.create'));
 });

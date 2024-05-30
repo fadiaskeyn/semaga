@@ -15,6 +15,12 @@ class Role
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
+        $userRole = $request->user()->role;
+
+        if ($userRole !== $role) {
+            return abort(403, 'Unauthorized');
+        }
+
         if ($role === 'admin' && $request->path() === 'dashboard') {
             return redirect('admin/dashboard');
         }

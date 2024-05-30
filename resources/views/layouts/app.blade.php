@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -12,8 +11,24 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script> --}}
+
+    <script src="https://editor.codecogs.com/eqneditor.api.min.js"></script>
+    <link rel="stylesheet" href="https://editor.codecogs.com/eqneditor.css" />
+    <script>
+        window.onload = function() {
+            textarea = EqEditor.TextArea.link('latexInput')
+                .addOutput(new EqEditor.Output('output'))
+                .addHistoryMenu(new EqEditor.History('history'));
+
+            EqEditor.Toolbar.link('toolbar').addTextArea(textarea);
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <!-- Scripts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -70,54 +85,78 @@
             </main>
         </div>
         {{-- Sidebar --}}
-        <div class="drawer-side shadow-lg">
+        <div class="drawer-side drawer-open shadow-lg">
             <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
             <ul class="menu p-4 w-40 sm:w-80 min-h-full bg-secondary text-white">
                 <!-- Sidebar content here -->
-                <div class="flex border-b items-center p-2 mb-2">
+                <div class="flex sm:border-b items-center p-2 mb-2">
                     <img class="w-9 h-9" src="{{ asset('icons/small-logo.jpg') }}" alt="logo">
                     <label class="font-bold text-sm w-36 m-2 hidden sm:block">SISTEM UJIAN SMAN 3 JEMBER</label>
                 </div>
                 <div>
-                    <li>
+                    <li class="bg-primary sm:bg-secondary text-white my-2">
                         <a class="my-2" href="{{ route('admin.dashboard')}}">
-                            <img class="w-7 h-7" src="{{ asset('icons/dashboard.png') }}" alt="">
-                            <span class="hidden sm:block">Dashboard</span>
+                            <img class="hidden sm:block w-7 h-7" src="{{ asset('icons/dashboard.png') }}" alt="">
+                            <span class="block">Dashboard</span>
                         </a>
                     </li>
-                    <li>
-                        <span class="hidden sm:flex">
-                            <img class="w-7 h-7" src="{{ asset('icons/Groups.png') }}" alt="">
-                            Data</span>
+                    <li class="bg-primary sm:bg-secondary text-white my-2">
+                        <a class="my-2 border-b-2 sm:border-none">
+                            <img class="hidden sm:block w-7 h-7" src="{{ asset('icons/Groups.png') }}" alt="">
+                            <span class="block text-gray-700 sm:text-white">Data</span>
+                        </a>
                         <a class="my-2" href="{{route('students.index')}}">
-                            <span class="hidden sm:block mx-16">Murid</span>
+                            <span class="block sm:mx-16">Murid</span>
                         </a>
                         <a class="my-2" href="{{ route('users.index') }}">
-                            <span class="hidden sm:block mx-16">Guru</span>
+                            <span class="block sm:mx-16">Guru</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="my-2">
-                            <img class="w-7 h-7" src="{{ asset('icons/books.png') }}" alt="">
-                            <span class="hidden sm:block">Ujian</span>
+                    <li class="bg-primary sm:bg-secondary text-white my-2">
+                        <a class="my-2 border-b-2 sm:border-none">
+                            <img class="hidden sm:block w-7 h-7" src="{{ asset('icons/books.png') }}" alt="">
+                            <span class="block text-gray-700 sm:text-white">Ujian</span>
                         </a>
                         <a class="my-2" href="{{route('banks.index')}}">
-                            <span class="hidden sm:block mx-16">Bank Soal</span>
+                            <span class="block sm:mx-16">Bank Soal</span>
                         </a>
                         <a class="my-2" href="{{route('ujian.index')}}">
-                            <span class="hidden sm:block mx-16">Penjadwalan</span>
+                            <span class="block sm:mx-16">Penjadwalan</span>
                         </a>
                         <a class="my-2" href="#">
-                            <span class="hidden sm:block mx-16">Riwayat Ujian</span>
+                            <span class="block sm:mx-16">Riwayat Ujian</span>
                         </a>
-                        {{-- <a class="my-2" href="{{ route('mapels.index') }}"> --}}
-                        {{-- <span class="hidden sm:block mx-16">Mapel</span> --}}
-                        {{-- </a> --}}
                     </li>
                 </div>
             </ul>
         </div>
     </div>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor-container'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.editor-container').forEach(function(container, index) {
+                ClassicEditor
+                    .create(container)
+                    .then(editor => {
+                        console.log('Editor initialized for container', index, editor);
+                    })
+                    .catch(error => {
+                        console.error('Error initializing editor for container', index, error);
+                    });
+            });
+        });
+    </script>
 </body>
 
 </html>
