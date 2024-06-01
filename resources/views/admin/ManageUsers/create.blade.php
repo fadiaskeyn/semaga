@@ -24,11 +24,6 @@
                     <option selected class="sm:text-xl">user</option>
                     <option class="sm:text-xl">admin</option>
                 </select>
-                <select name="status" class="select select-bordered w-full my-2 sm:text-xl">
-                    <option selected class="sm:text-xl">active</option>
-                    <option class="sm:text-xl">inactive</option>
-                </select>
-
                 <div class="justify-center my-2">
                     <a class="btn btn-block my-2" href="{{route('users.index')}}">Cancel</a>
                     <button type="submit" class="btn btn-block btn-primary my-2">SUBMIT</button>
