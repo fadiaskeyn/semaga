@@ -19,7 +19,7 @@ class BankUjianController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.BankUjian.create');
     }
 
     /**

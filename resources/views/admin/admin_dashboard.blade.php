@@ -15,7 +15,7 @@
                         <span class="font-semibold text-xl">{{Auth::user()->name}}</span>
                         <span class="inline-flex gap-1 items-center">
                             <img class="w-4 h-4" src="{{ asset('icons/office-worker.png') }}" />
-                            NIP. {{ Auth::user()->id}}</span>
+                            NIP. {{ Auth::user()->nip}}</span>
                     </div>
                 </div>
             </div>

@@ -20,6 +20,9 @@ Breadcrumbs::for('Data', function (BreadcrumbTrail $trail) {
     $trail->push('Data');
 });
 
+Breadcrumbs::for('profile', function (BreadcrumbTrail $trail) {
+    $trail->push('Profile', route('profile.edit'));
+});
 // Dashboard > Data Murid
 Breadcrumbs::for('DataMurid', function (BreadcrumbTrail $trail) {
     $trail->parent('Data');
@@ -36,8 +39,19 @@ Breadcrumbs::for('ujian', function (BreadcrumbTrail $trail) {
     $trail->push('Ujian');
 });
 
+Breadcrumbs::for('Penjadwalan', function (BreadcrumbTrail $trail) {
+    $trail->push('Ujian');
+    $trail->push('Pendjadwalan', route('ujian.index'));
+});
+
 // Dashboard > Ujian > Bank Soal
 Breadcrumbs::for('BankSoal', function (BreadcrumbTrail $trail) {
     $trail->parent('ujian');
     $trail->push('Bank Soal', route('banks.index'));
+});
+
+// Dashboard > Ujian > Bank Soal > Buat Soal
+Breadcrumbs::for('BuatBankSoal', function (BreadcrumbTrail $trail) {
+    $trail->parent('BankSoal');
+    $trail->push('Buat Bank Soal', route('banks.create'));
 });
