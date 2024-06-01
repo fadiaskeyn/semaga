@@ -7,13 +7,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'SIUJI') }}</title>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <!-- Scripts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -104,7 +104,9 @@
                         <a class="my-2" href="{{route('banks.index')}}">
                             <span class="hidden sm:block mx-16">Bank Soal</span>
                         </a>
-                        <span class="hidden sm:block mx-16">Pantau Ujian</span>
+                        <a class="my-2" href="{{route('ujian.index')}}">
+                            <span class="hidden sm:block mx-16">Penjadwalan</span>
+                        </a>
                         <span class="hidden sm:block mx-16">Riwayat Ujian</span>
                     </li>
                 </div>

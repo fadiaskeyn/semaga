@@ -17,6 +17,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "flatpickr": "^4.6.13",
         "tw-elements": "^1.1.0"
     }
 }

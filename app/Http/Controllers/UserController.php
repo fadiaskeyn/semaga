@@ -40,11 +40,11 @@ class UserController extends Controller
             'role' => $request->input('role'),
             'status' => $request->input('status'),
         ]);
-
         $users->save();
 
         return redirect(route('users.index'))->with('success', 'User berhasil dibuat!');
     }
+
 
     public function edit(string $id)
     {
