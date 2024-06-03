@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,11 +13,19 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->json('options'); // Menggunakan kolom json untuk menyimpan opsi dalam bentuk array
-            $table->unsignedBigInteger('quiz_id'); // Menggunakan kolom unsignedBigInteger untuk kunci luar ke tabel 'quizzes'
-            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade'); // Membuat kunci luar ke tabel 'quizzes' dengan tindakan penghapusan otomatis (cascade)
+            $table->string('option1');
+            $table->string('option2');
+            $table->string('option3');
+            $table->string('option4');
+            $table->string('option5');
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('quiz_id');
+            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->string('correct_answer');
-            $table->timestamps(); // Kolom untuk menyimpan waktu pembuatan dan pembaruan record
+            $table->decimal('score');
+            $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 

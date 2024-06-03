@@ -43,6 +43,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('admin/mapels', MapelController::class)->except(['show']);
     //bank soal
     Route::resource('admin/banks', BankUjianController::class)->except(['show']);
+    Route::post('admin/banks/store', [BankUjianController::class,'store'])->name('banks.store');
 
 }); //Akhir dari group admin middleware
 

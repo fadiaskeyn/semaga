@@ -11,6 +11,15 @@ class Question extends Model
 
     protected $fillable = [
         'name',
-        ''
+        'question',
+        'correct_answer',
+        'option1',
+        'option2',
+        'created_by',
+        'quiz_id',
+        'score',
+        'option3',
+        'option4',
+        'option5',
     ];
 }

@@ -41,5 +41,4 @@ class Quiz extends Model
             }
         );
     }
-
 }
