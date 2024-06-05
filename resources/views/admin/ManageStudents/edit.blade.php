@@ -13,15 +13,14 @@
                 </ul>
             </div>
             @endif
-            <form action="{{route( 'students.update', $students->id )}}" method="POST" class="flex flex-col">
+            <form action="{{ route('students.update', $students->id) }}" method="POST" class="flex flex-col">
                 @csrf
                 @method('PUT')
 
                 <label class="input input-bordered flex items-center gap-2">
                     Name
-                    <input value="{{ $students->name}}" name="name" type="text" class="grow" autofocus />
+                    <input value="{{ $students->name }}" name="name" type="text" class="grow" autofocus />
                 </label>
-
 
                 <label class="input input-bordered flex items-center gap-2">
                     Grade
@@ -35,19 +34,18 @@
                 <label class="input input-bordered flex items-center gap-2">
                     Gender
                     <select name="gender" class="grow">
-                        <option value="L" {{ old('gender', $students->gender) == 'L' ? 'selected' : ''}}>L</option>
-                        <option value="P" {{ old('gender', $students->gender) == 'P' ? 'selected' : ''}}>P</option>
+                        <option value="L" {{ old('gender', $students->gender) == 'L' ? 'selected' : '' }}>L</option>
+                        <option value="P" {{ old('gender', $students->gender) == 'P' ? 'selected' : '' }}>P</option>
                     </select>
                 </label>
 
                 <label class="input input-bordered flex items-center gap-2">
                     Email
-                    <input value="{{ $students->email}}" name="email" type="email" class="grow" />
+                    <input value="{{ $students->email }}" name="email" type="email" class="grow" />
                 </label>
 
-
                 <div class="justify-center my-2">
-                    <a class="btn btn-block my-2" href="{{route('students.index')}}">Cancel</a>
+                    <a class="btn btn-block my-2" href="{{ route('students.index') }}">Cancel</a>
                     <button type="submit" class="btn btn-block btn-primary my-2">SUBMIT</button>
                 </div>
 

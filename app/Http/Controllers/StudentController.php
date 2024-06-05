@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::paginate(9);
+
+        $search = $request->input('search');
+
+        $students = Student::query()
+            ->where('nis', 'like', "%{$search}%")
+            ->orWhere('name', 'like', "%{$search}%")
+            ->paginate(9);
 
         return view('admin.ManageStudents.index', compact('students'));
     }
@@ -22,7 +28,6 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // TODO ad id for param
             'nis' => 'required|max:15',
             'name' => 'required',
             'grade' => 'required|in:X,XI,XII',
@@ -53,7 +58,6 @@ class StudentController extends Controller
     public function edit(string $id)
     {
         $students = Student::find($id);
-        // dd($students);
 
         return view('admin.ManageStudents.edit', compact(['students']));
     }
@@ -82,10 +86,6 @@ class StudentController extends Controller
     public function destroy(string $id)
     {
         $students = Student::find($id);
-        if (! $students) {
-            return redirect()->route('students.index')->with('error', 'Gagal menghapus murid!');
-        }
-
         $students->delete();
 
         return redirect(route('students.index'))->with('success', 'Akun berhasil dihapus!');

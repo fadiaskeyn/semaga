@@ -15,7 +15,8 @@
             @endif
             <form action="{{route('users.index')}}" method="POST" class="flex flex-col">
                 @csrf
-                <input required name="name" type="text" placeholder="Enter Full Name" class="input input-bordered w-full my-2 sm:text-xl" autofocus />
+                <input required name="nip" type="text" placeholder="Enter nip" class="input input-bordered w-full my-2 sm:text-xl" autofocus/>
+                <input required name="name" type="text" placeholder="Enter Full Name" class="input input-bordered w-full my-2 sm:text-xl"/>
                 <input required name="username" type="text" placeholder="Enter Username" class="input input-bordered w-full my-2 sm:text-xl" />
                 <input required name="email" type="email" placeholder="Enter Email" class="input input-bordered w-full my-2 sm:text-xl" />
                 <input required name="password" type="password" placeholder="Enter Password at least 8 characters" class="input input-bordered w-full my-2 sm:text-xl" />
