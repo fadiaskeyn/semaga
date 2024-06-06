@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(9);
+        $search = $request->input('search');
+
+        $users = User::query()
+            ->where('nip', 'like', "%{$search}%")
+            ->orWhere('name', 'like', "%{$search}%")
+            ->paginate(9);
 
         return view('admin.ManageUsers.index', compact('users'));
     }
@@ -22,6 +27,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nip' => 'required|min:18',
             'name' => 'required',
             'username' => 'required',
             'email' => 'required|email',
@@ -31,6 +37,7 @@ class UserController extends Controller
         ]);
 
         $users = new User([
+            'nip' => $request->input('nip'),
             'name' => $request->input('name'),
             'username' => $request->input('username'),
             'password' => bcrypt($request->input('password')),
@@ -46,7 +53,6 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $users = User::find($id);
-        dd($users);
 
         return view('admin.ManageUsers.edit', compact(['users']));
     }

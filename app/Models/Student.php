@@ -1,23 +1,19 @@
 <?php
 
-namespace App\Models;
+namespace app\models;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use illuminate\auth\authenticatable;
+use illuminate\contracts\auth\authenticatable as authenticatablecontract;
+use illuminate\database\eloquent\factories\hasfactory;
+use illuminate\database\eloquent\model;
+use illuminate\notifications\notifiable;
+use laravel\sanctum\hasapitokens;
 
-class Student extends Model implements AuthenticatableContract
+class student extends model implements authenticatablecontract
 {
-    use Authenticatable, HasApiTokens, HasFactory, Notifiable;
+    use authenticatable, hasapitokens, hasfactory, notifiable;
 
-    protected $tokenName = 'api_token';
-
-    // protected $guarded = [];
-
-    protected $primaryKey = 'nis';
+    protected $tokenname = 'api_token';
 
     protected $guarded = ['id'];
 
@@ -30,17 +26,17 @@ class Student extends Model implements AuthenticatableContract
         'email_verified_at' => 'datetime',
     ];
 
-    public function getAuthIdentifierName()
+    public function getauthidentifiername()
     {
         return 'nis';
     }
 
-    public function getAuthIdentifier()
+    public function getauthidentifier()
     {
-        return $this->{$this->getAuthIdentifierName()};
+        return $this->{$this->getauthidentifiername()};
     }
 
-    public function getAuthPassword()
+    public function getauthpassword()
     {
         return $this->password;
     }
