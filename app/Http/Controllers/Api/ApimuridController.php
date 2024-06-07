@@ -45,33 +45,19 @@ return response()->json($data);
         ]);
     }
 
-
     public function login(Request $request)
     {
+        if (! Auth::guard('students')->attempt($request->only('nis', 'password'))) {
+            return response()->json([
+                'message' => 'Unauthorized'
+            ], 401);
+        }
         $user = Auth::guard('students')->user();
-
-        if (!$user) {
-            if (!Auth::guard('students')->attempt($request->only('nis', 'password'))) {
-                return response()->json([
-                    'message' => 'Data Tidak Ditemukan'
-                ], 401);
-            }
-            $user = Auth::guard('students')->user();
-        }
-
-        // Mengecek apakah pengguna sudah memiliki token sebelumnya
-        if ($user->tokens()->count() > 0) {
-            $token = $user->tokens()->first()->token;
-        } else {
-            // Jika pengguna belum memiliki token sebelumnya, maka buat token baru
-            $token = $user->createToken('auth_token')->plainTextToken;
-        }
-
+        $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
             'message' => 'Login success',
             'access_token' => $token,
-            'token_type' => 'Bearer',
-            'data' => $user
+            'token_type' => 'Bearer'
         ]);
     }
 

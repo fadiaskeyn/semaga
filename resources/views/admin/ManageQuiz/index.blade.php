@@ -65,6 +65,7 @@
                                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Tanggal</th>
                                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Durasi</th>
                                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status</th>
+                                <th scope="col" class="px-6 py-4 font-medium text-gray-900">Jumlah Soal</th>
                                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Action</th>
                             </tr>
                         </thead>
@@ -87,7 +88,7 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <div class="flex gap-2">
+                                    <div class="flex gap-2">
                                             <span class="inline-flex items-center gap-1 rounded-full
                                                          @if($quiz->status == 'off') bg-red-50 text-red-600 @else bg-green-50 text-green-600 @endif
                                                          px-2 py-1 text-xs font-semibold">
@@ -99,8 +100,13 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
+                                        @foreach ($ready as $quizis )
+                                        {{ $quizis->quiz->count() }}
+                                        @endforeach
+                                    </td>
+                                    <td class="px-6 py-4">
                                         <div class="flex justify-start gap-4">
-                                            <a x-data="{ tooltip: 'Delete' }" href="/ujian/delete/{{ $quiz->id }}">
+                                            <a x-data="{ tooltip: 'Delete' }" href="/ujian/delete/{{ $quiz->id }}" title="Hapus Ujian">
                                                 <svg
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         fill="none"
@@ -122,7 +128,7 @@
                                                @mouseover="tooltip = 'Edit'"
                                                @mouseout="tooltip = 'Edit'"
                                                @click="my_modal_3.showModal()"
-                                               class="cursor-pointer">
+                                               class="cursor-pointer" title="Perbarui Ujian">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                      fill="none"
                                                      viewBox="0 0 24 24"

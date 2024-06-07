@@ -14,13 +14,23 @@ class Quiz extends Model
     protected $fillable = [
         'title',
         'code_quiz',
-        'create_by',
+        'created_by',
         'quiz_date',
         'course',
         'start',
         'end',
         'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 
     protected function quizStart(): Attribute
     {

@@ -6,8 +6,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuizreadyController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Models\Quizready;
 use Illuminate\Support\Facades\Route;
 
 // Disini pintu awal user untuk akses aplikasi kita (login)
@@ -55,5 +57,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('user/ujian', [QuizController::class, 'index']);
     Route::get('user/{id}/ujian', [QuizController::class, 'index']);
 }); // Akhir dari group user middleware
+
+Route::get('/admin/quizready/view', [QuizreadyController::class,'view'])->name('quiz.detail');
+
 
 require __DIR__.'/auth.php';

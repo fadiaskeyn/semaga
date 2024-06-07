@@ -38,7 +38,7 @@
                     @foreach ($data as $question)
                         <tr>
                             <th>{{$question->id}}</th>
-                            <input type="text" name="persoalan" disabled>{!! $question->question !!}
+                            {{--  <input type="text" name="persoalan" disabled>{!! $question->question !!}  --}}
                             <td name="soalfinal">{!! $question->question !!}</td>
                             <td>{{$question->correct_answer}}</td>
                             <td>{{ intval($question->score) }}</td>
@@ -57,8 +57,6 @@
                 </tbody>
                                  <!--END tbody-->
             </table>
-            <p>Hasil dari \( 3\tfrac{2}{4} \) adalah berapa?</p>
-            
         </div>
     </div>
 

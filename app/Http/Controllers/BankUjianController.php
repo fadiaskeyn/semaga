@@ -44,9 +44,9 @@ class BankUjianController extends Controller
             'option3' => $request->option3,
             'option4' => $request->option4,
             'option5' => $request->option5,
-            'correct_answer' => $request->correct_answer,
+            'correct_answer' => $request->{$request->correct_answer},
             'created_by' => $user,
-            'quiz_id' => 2,
+            'quiz_id' => 8,
             'score' =>10,
             'score' => 10,
         ]);

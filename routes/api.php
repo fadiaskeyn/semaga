@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApimuridController;
 use App\Http\Controllers\Api\ApiUjianController;
+use App\Http\Controllers\QuizreadyController;
+use App\Models\Quizready;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('student/{$id}', [ApimuridController::class,'student']);
 Route::get('quiz',[ApiUjianController::class,'getUjian']);
 Route::get('quiz/send', [ApiUjianController::class,'#'])->name('user');
+Route::get('/quiz/quizready', [ApiUjianController::class,'getreadyquiz'])->name('quizready.get');
+Route::post('/question', [ApiUjianController::class,'getSoal'])->name('getsoal');
 
 });
 

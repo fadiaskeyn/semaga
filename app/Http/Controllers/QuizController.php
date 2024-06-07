@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Quizready;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ class QuizController extends Controller
 {
     public function index(Request $request)
     {
+        $ready = Quizready::get();
         $data = Quiz::all();
         $edit = Quiz::where('id')->get();
         $durasis = [];
@@ -18,7 +20,6 @@ class QuizController extends Controller
         foreach ($data as $quiz) {
             $start = $quiz->start;
             $end = $quiz->end;
-
             // Membuat objek Carbon dari waktu start dan end
             $start_time = Carbon::createFromFormat('H:i:s', $start);
             $end_time = Carbon::createFromFormat('H:i:s', $end);
@@ -40,18 +41,15 @@ class QuizController extends Controller
                 $quiz->save(); // Simpan perubahan status
             }
         }
-
-        return view('admin.ManageQuiz.index', compact('data', 'durasis', 'edit'));
+        return view('admin.ManageQuiz.index', compact('data', 'durasis', 'edit','ready'));
     }
 
     public function create(Request $request)
     {
         $user = Auth::user();
         $status = 'off';
-
         try {
             $request->validate([
-                // "title" => "required",
                 'tanggal' => 'required',
                 'course' => 'required',
                 'jam_ujian' => 'required',
@@ -59,7 +57,7 @@ class QuizController extends Controller
             $code = str_pad(rand(0, pow(10, 10) - 1), 10, '0', STR_PAD_LEFT);
             $quiz = Quiz::create([
                 'title' => $request->title,
-                'create_by' => $user->id,
+                'created_by' => $user->id,
                 'code_quiz' => $code,
                 'quiz_date' => $request->tanggal,
                 'course' => $request->course,

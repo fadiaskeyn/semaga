@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Models\Question;
 use App\Models\Quiz;
+use App\Models\Question;
+use App\Models\Quizready;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\QuizReadyResource;
 
 
 class ApiUjianController extends Controller
 {
     public function getUjian(Request $request){
-        $data =  Quiz::where('status','active')->get();
+        $data =  Quiz::all();
         $authen = Auth::guard()->user('student');
         if($authen){
         return response()->json([
@@ -25,16 +27,14 @@ class ApiUjianController extends Controller
             'error' => 401,
         ]);
     }
-
-
     }
 
     public function getsoal(Request $request){
-        $question = Question::where('quiz_id',$request);
+        $question = Question::where('quiz_id',$request->quiz_id)->get();
         $authen = Auth::guard()->user('students');
         if($authen){
             return response()->json([
-                'message'=> 'Sukses',
+                'message'=> 'succes',
                 'data' => $question
             ]);
         }{
@@ -43,6 +43,15 @@ class ApiUjianController extends Controller
                 'error' => 401
             ]);
         }
+    }
+
+    public function getreadyquiz(){
+        $data = Quizready::get();
+        return response()->json([
+            'message' => 'succes',
+            'data' => QuizReadyResource::collection($data),
+        ]);
+
     }
 
 }

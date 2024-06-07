@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('code_quiz')->nullable();
-            $table->string('create_by')->nullable();
             $table->date('quiz_date')->nullable();
             $table->string('course')->nullable();
             $table->time('start')->nullable();
             $table->time('end')->nullable();
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->enum('status', ['active', 'off'])->default('off');
             $table->timestamps();
         });
