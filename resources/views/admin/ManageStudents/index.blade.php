@@ -24,15 +24,15 @@
         <div class="container bg-white overflow-auto rounded-lg">
             <table class="table table-xs table-zebra">
                 <!-- head -->
-                <thead>
+                <thead class="bg-secondary">
                     <tr>
-                        <th>#</th>
-                        <th>nis</th>
-                        <th>Name</th>
-                        <th>grade</th>
-                        <th>gender</th>
-                        <th>email</th>
-                        <th>Action</th>
+                        <th class="text-cyan-50">#</th>
+                        <th class="text-cyan-50">nis</th>
+                        <th class="text-cyan-50">Name</th>
+                        <th class="text-cyan-50">grade</th>
+                        <th class="text-cyan-50">gender</th>
+                        <th class="text-cyan-50">email</th>
+                        <th class="text-cyan-50">Action</th>
                     </tr>
                 </thead> <!--END thead-->
                 <tbody>

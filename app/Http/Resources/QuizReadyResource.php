@@ -8,7 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class QuizReadyResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform resource menjadi array.
      *
      * @return array<string, mixed>
      */

@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Quiz;
 use App\Models\Quizready;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
     public function index(Request $request)
     {
-        $ready = Quizready::get();
+        $ready = Quiz::leftJoin('quizreadies', 'quizzes.id', '=', 'quizreadies.quiz_id')
+    ->select('quizzes.id', 'quizzes.title', DB::raw('COALESCE(COUNT(quizreadies.quiz_id), 0) AS count_quizreadies'))
+    ->groupBy('quizzes.id', 'quizzes.title')
+    ->get();
+    
         $data = Quiz::all();
         $edit = Quiz::where('id')->get();
         $durasis = [];

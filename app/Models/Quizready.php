@@ -9,14 +9,18 @@ class Quizready extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'quiz_id',
         'question_id',
-        'score',
     ];
 
     public function quiz()
     {
         return $this->belongsTo(Quiz::class);
+    }
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
     }
 }

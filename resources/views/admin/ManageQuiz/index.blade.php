@@ -100,10 +100,10 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        @foreach ($ready as $quizis )
-                                        {{ $quizis->quiz->count() }}
-                                        @endforeach
+                                        {{ $quiz->quizreadies->count() }}
                                     </td>
+
+
                                     <td class="px-6 py-4">
                                         <div class="flex justify-start gap-4">
                                             <a x-data="{ tooltip: 'Delete' }" href="/ujian/delete/{{ $quiz->id }}" title="Hapus Ujian">

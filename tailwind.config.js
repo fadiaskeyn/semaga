@@ -14,6 +14,9 @@ export default {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
+            backgroundColor: {
+                'rgba-145-200-228-02': 'rgba(145, 200, 228, 0.2)',
+              },
         },
     },
 
@@ -26,6 +29,7 @@ export default {
                 mytheme: {
                     primary: "#3C6D8D",
                     secondary: "#4682A9",
+                    bodytable: "91C8E4",
                     accent: "#F6F4EB",
                     neutral: "#f3f4f6",
                     "base-100": "#fdffff",

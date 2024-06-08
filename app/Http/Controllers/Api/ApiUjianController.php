@@ -7,9 +7,11 @@ use App\Models\Question;
 use App\Models\Quizready;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\QuizResource;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 use App\Http\Resources\QuizReadyResource;
-
+use App\Models\Result;
 
 class ApiUjianController extends Controller
 {
@@ -45,13 +47,26 @@ class ApiUjianController extends Controller
         }
     }
 
-    public function getreadyquiz(){
-        $data = Quizready::get();
-        return response()->json([
-            'message' => 'succes',
-            'data' => QuizReadyResource::collection($data),
-        ]);
+    public function getreadyquiz(Request $request)
+{
+    $quizzes = Quiz::with('questions')->where('id', $request->input('quiz_id'))->get();
+    return response()->json([
+        'message' => 'success',
+        'data' => QuizResource::collection($quizzes),
+    ]);
+}
 
-    }
+public function sendresult(Request $request){
+    $result = Result::create([
+        'quiz_id' => $request->quiz_id,
+        'student_id' => $request->nis,
+        'final_score' => $request->score
+    ]);
+    return response()->json([
+        'message' => 'kwontol',
+        'data' => $result
+    ]);
+}
+
 
 }

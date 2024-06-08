@@ -38,7 +38,6 @@
                     @foreach ($data as $question)
                         <tr>
                             <th>{{$question->id}}</th>
-                            {{--  <input type="text" name="persoalan" disabled>{!! $question->question !!}  --}}
                             <td name="soalfinal">{!! $question->question !!}</td>
                             <td>{{$question->correct_answer}}</td>
                             <td>{{ intval($question->score) }}</td>
@@ -46,7 +45,7 @@
                             <td class="flex">
                                 <a class="btn btn-warning text-md my-1" href="#">Edit</a>
                                 <!-- Open the modal using ID.showModal() method -->
-                                <form action="" method="POST">
+                                <form action="{{ route('question.delete',$question->id) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
                                     <input type="submit" class="btn btn-error text-md my-1 " value="Delete">

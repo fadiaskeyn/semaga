@@ -10,7 +10,7 @@
     <table>
         <thead>
             <tr>
-                <th>#</th>
+                <th>No.</th>
                 <th>Nama Kuis</th>
                 <th>Jumlah Soal</th>
                 <th>Jumlah Soal</th>

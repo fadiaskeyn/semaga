@@ -20,10 +20,9 @@ return new class extends Migration
             $table->string('option5');
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('quiz_id');
-            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
+            $table->unsignedBigInteger('quiz_id')->nullable();
+            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade')->nullable();
             $table->string('correct_answer');
-            $table->decimal('score');
             $table->string('image')->nullable();
             $table->timestamps();
         });

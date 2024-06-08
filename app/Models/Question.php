@@ -10,16 +10,20 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'question',
-        'correct_answer',
         'option1',
         'option2',
-        'created_by',
-        'quiz_id',
-        'score',
         'option3',
         'option4',
         'option5',
+        'created_by',
+        'quiz_id',
+        'correct_answer',
+        'image',
     ];
+
+    public function quizreadies()
+    {
+        return $this->hasMany(Quizready::class);
+    }
 }
