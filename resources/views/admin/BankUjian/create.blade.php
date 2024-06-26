@@ -1,6 +1,6 @@
 <x-app-layout>
     @section('breadcrumbs')
-    {{ Breadcrumbs::render('BuatBankSoal') }}
+        {{ Breadcrumbs::render('BuatBankSoal') }}
     @endsection
 
     <div aria-label="soal-container" class="md:grid gap-4">
@@ -10,8 +10,12 @@
                 <div aria-label="soal-ke-1" class="soal-form bg-white rounded-xl px-4 mb-4">
                     <div class="flex items-center mt-5 text-primary gap-4">
                         <label>Soal ke - 1</label>
-                        <input type="radio" name="jenis-ujian-1" class="radio" checked /> Pilihan Ganda
-                        <input type="radio" name="jenis-ujian-1" class="radio" /> Uraian
+                        <input type="text" name="" class="block appearance-none bg-white border mt-3 border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline ml-20" placeholder="Tulis BAB"/>
+                        <select name="" class="block appearance-none bg-white border mt-3 border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" placeholder="Pilih Mata Pelajaran">
+                        <option>Pilih Mata Pelajaran</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
                     </div>
                     <h1>Pertanyaan <span class="text-red-600">*</span></h1>
                     <textarea aria-label="rumus" id="summernote-1" name="question-1"></textarea>
@@ -51,8 +55,11 @@
         </form>
     </div>
 
-    <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
+    <script>
         $(document).ready(function() {
             function initializeSummernote() {
                 $('[id^="summernote"]').each(function() {
@@ -77,11 +84,6 @@
                 newForm.setAttribute('aria-label', `soal-ke-${questionCount}`);
                 newForm.classList.add('soal-form', 'bg-white', 'rounded-xl', 'px-4', 'mb-4');
                 newForm.innerHTML = `
-                    <div class="flex items-center mt-5 text-primary gap-4">
-                        <label>Soal ke - ${questionCount}</label>
-                        <input type="radio" name="jenis-ujian-${questionCount}" class="radio" checked /> Pilihan Ganda
-                        <input type="radio" name="jenis-ujian-${questionCount}" class="radio" /> Uraian
-                    </div>
                     <h1>Pertanyaan <span class="text-red-600">*</span></h1>
                     <textarea aria-label="rumus" id="summernote-${questionCount}" name="question-${questionCount}"></textarea>
                     <div class="grid items-center py-2 gap-4">
@@ -116,35 +118,5 @@
                 initializeSummernote();
             });
         });
-
-        $('#summernote').summernote({
-            height: ($(window).height() - 300),
-            callbacks: {
-                onImageUpload: function(image) {
-                    uploadImage(image[0]);
-                }
-            }
-        });
-
-        function uploadImage(image) {
-            var data = new FormData();
-            data.append("image", image);
-            $.ajax({
-                url: 'Your url to deal with your image',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: data,
-                type: "post",
-                success: function(url) {
-                    var image = $('<img>').attr('src', 'http://' + url);
-                    $('#summernote').summernote("insertNode", image[0]);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
-
     </script>
 </x-app-layout>

@@ -11,7 +11,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script> --}}
-
+    <script src="https://kit.fontawesome.com/f15ba4ed30.js" crossorigin="anonymous"></script>
     <script src="https://editor.codecogs.com/eqneditor.api.min.js"></script>
     <link rel="stylesheet" href="https://editor.codecogs.com/eqneditor.css" />
     <script>

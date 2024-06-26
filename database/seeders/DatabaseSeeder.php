@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Student;
 use App\Models\User;
+use App\Models\Student;
 use Illuminate\Database\Seeder;
+use Database\Seeders\MapelSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             StudentSeeder::class,
+            MapelSeeder::class
         ]);
 
         /* *
@@ -29,6 +31,5 @@ class DatabaseSeeder extends Seeder
          */
         User::factory(10)->create();
         Student::factory(27)->create();
-
     }
 }

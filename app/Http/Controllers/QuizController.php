@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Carbon\Carbon;
 use App\Models\Quiz;
 use App\Models\Quizready;
@@ -17,7 +18,7 @@ class QuizController extends Controller
     ->select('quizzes.id', 'quizzes.title', DB::raw('COALESCE(COUNT(quizreadies.quiz_id), 0) AS count_quizreadies'))
     ->groupBy('quizzes.id', 'quizzes.title')
     ->get();
-    
+
         $data = Quiz::all();
         $edit = Quiz::where('id')->get();
         $durasis = [];
@@ -25,22 +26,13 @@ class QuizController extends Controller
         foreach ($data as $quiz) {
             $start = $quiz->start;
             $end = $quiz->end;
-            // Membuat objek Carbon dari waktu start dan end
             $start_time = Carbon::createFromFormat('H:i:s', $start);
             $end_time = Carbon::createFromFormat('H:i:s', $end);
-
-            // Menghitung durasi
             $duration = $end_time->diff($start_time);
             $hours = $duration->h;
             $minutes = $duration->i;
-
-            // Menyimpan durasi dalam format yang diinginkan
             $durasis[] = $hours.' jam '.$minutes.' menit';
-
-            // Membuat objek Carbon untuk waktu saat ini dalam timezone Asia/Jakarta
             $setActive = Carbon::now('Asia/Jakarta');
-
-            // Memeriksa apakah waktu mulai ujian sudah sama dengan waktu saat ini
             if ($quiz->start == $setActive->format('H:i:s')) {
                 $quiz->status = 'active';
                 $quiz->save(); // Simpan perubahan status
@@ -48,6 +40,7 @@ class QuizController extends Controller
         }
         return view('admin.ManageQuiz.index', compact('data', 'durasis', 'edit','ready'));
     }
+
 
     public function create(Request $request)
     {
@@ -100,10 +93,25 @@ class QuizController extends Controller
             $quiz = Quiz::findOrFail($id);
             $user = Auth::user();
             $quiz->delete();
-
             return redirect('/'.$user->role.'/ujian')->with('sukses', 'Kuis berhasil dihapus');
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
     }
+
+//     public function show_quest_set_on_quiz(string $id){
+//         try {
+//             $quiz = Quiz::select('id','question','correct_answer',);
+// return view('admin.QuizReady.select_quiz', compact('quiz'));
+//         } catch (\Exception $e) {
+//             dd($e->getMessage());
+//         }
+//     }
+
+
+    public function savequestionforquizsousercansetwhereverquestioncansetonquiz(Request $request){
+        $quest =  Question::select('question')->where('id',$request)->get();
+        dd($quest);
+    }
 }
+

@@ -10,15 +10,14 @@
                     <th>Mapel</th>
                     <th>Action</th>
                 </tr>
-            </thead> <!--END thead-->
+            </thead>
             <tbody>
-                {{-- looping row --}}
                 @foreach ($mapels as $mapel)
                 <tr>
                     <th>{{$mapel->id}}</th>
                     <td>{{$mapel->mapel}}</td>
                     <td class="flex gap-2">
-                        <a class="btn btn-warning text-md my-1" href="/mapels/{{$mapel->id}}/edit">Edit</a>
+                        <a class="btn btn-warning text-md my-1" href="mapels/{{$mapel->id}}/edit">Edit</a>
                         <!-- Open the modal using ID.showModal() method -->
                                 <form action="{{route('mapels.destroy', $mapel->id)}}" method="POST">
                                     @method('DELETE')

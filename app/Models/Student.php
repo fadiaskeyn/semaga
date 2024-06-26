@@ -24,6 +24,7 @@ class Student extends Model implements AuthenticatableContract
     protected $hidden = [
         'password',
         'remember_token',
+        'name',
     ];
 
     protected $casts = [
@@ -43,5 +44,9 @@ class Student extends Model implements AuthenticatableContract
     public function getAuthPassword()
     {
         return $this->password;
+    }
+
+    public function result(){
+        return $this->hasMany(Result::class);
     }
 }

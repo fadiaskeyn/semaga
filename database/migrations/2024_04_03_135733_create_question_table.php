@@ -24,6 +24,8 @@ return new class extends Migration
             $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade')->nullable();
             $table->string('correct_answer');
             $table->string('image')->nullable();
+            $table->string('major')->nullable();
+            $table->string('bab')->nullable();
             $table->timestamps();
         });
     }

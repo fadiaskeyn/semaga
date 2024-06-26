@@ -38,6 +38,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/ujian/create', [QuizController::class, 'create'])->name('ujian.create');
     Route::get('/ujian/delete/{id}', [QuizController::class, 'destroy'])->name('ujian.delete');
     Route::get('/ujian/set/{id}', [QuizController::class])->name('ujian.set');
+    Route::get('/admin/ujian/{id}/setquestion', [QuizreadyController::class,'view'])->name('admin.quizready.index');
+    Route::post('admin/ujian/{quiz_id}/setquestion', [QuizreadyController::class, 'update'])->name('admin.quizready.update');
+
 
     //staff
     Route::resource('admin/users', UserController::class)->except(['show']);
@@ -49,9 +52,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('admin/banks', BankUjianController::class)->except(['show']);
     Route::post('admin/banks/store', [BankUjianController::class,'store'])->name('banks.store');
     Route::delete('/question/delete/{id}', [BankUjianController::class,'destroy'])->name('question.delete');
-
     Route::get('/admin/result', [ResultController::class,'index'])->name('result.index');
-
 }); //Akhir dari group admin middleware
 
 Route::post('storage/question_images', [BankUjianController::class, 'uploadImage'])->name('image.upload');
@@ -59,14 +60,12 @@ Route::post('storage/question_images', [BankUjianController::class, 'uploadImage
 // Setelah berhasil login, user akan diarahkan jika bukan admin akan masuk ke alur ini
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index']);
-
     // Penjadwalan
     Route::get('user/ujian', [QuizController::class, 'index']);
     Route::get('user/{id}/ujian', [QuizController::class, 'index']);
+});
 
-}); // Akhir dari group user middleware
-
-Route::get('/admin/quizready/view', [QuizreadyController::class,'view'])->name('quiz.detail');
+// Akhir dari group user middleware
 
 
 require __DIR__.'/auth.php';

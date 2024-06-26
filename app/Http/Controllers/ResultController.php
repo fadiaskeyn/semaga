@@ -10,7 +10,11 @@ class ResultController extends Controller
 
 
         public function index(){
-            $result = Result::all();
+            $result = Result::get();
         return view('admin.Result.index',compact('result'));
+        }
+
+        public function create(){
+
         }
 }

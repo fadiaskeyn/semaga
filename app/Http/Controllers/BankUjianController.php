@@ -43,12 +43,10 @@ class BankUjianController extends Controller
             $rules["correct_answer-$questionCount"] = 'required';
             $questionCount++;
         }
-
         $validated = $request->validate($rules);
 
         // Reset the question count
         $questionCount = 1;
-
         // Loop through each question and save to the database
         while ($request->has("question-$questionCount")) {
             Question::create([
@@ -63,7 +61,6 @@ class BankUjianController extends Controller
             ]);
             $questionCount++;
         }
-
         return redirect('admin/banks')->with('sukses', 'Soal berhasil disimpan');
     }
 

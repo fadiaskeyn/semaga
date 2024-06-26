@@ -10,8 +10,6 @@ class MapelController extends Controller
     public function index()
     {
         $mapels = Mapel::all();
-
-        // $mapels->dd(); -- debug atribute
         return view('admin.ManageMapel.index', compact('mapels'));
     }
 
@@ -24,6 +22,10 @@ class MapelController extends Controller
     {
         $request->validate([
             'mapel' => 'required',
+        ]);
+
+        Mapel::create([
+            'mapel' => $request->mapel
         ]);
 
         $mapels = new Mapel([

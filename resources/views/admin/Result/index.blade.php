@@ -6,30 +6,27 @@
             <!-- head -->
             <thead class="bg-secondary">
                 <tr>
-                    <th class="text-cyan-50">#</th>
-                    <th class="text-cyan-50">nis</th>
-                    <th class="text-cyan-50">Name</th>
-                    <th class="text-cyan-50">grade</th>
-                    <th class="text-cyan-50">gender</th>
-                    <th class="text-cyan-50">email</th>
+                    <th class="text-cyan-50">No</th>
+                    <th class="text-cyan-50">Nama Ujian</th>
+                    <th class="text-cyan-50">Jumlah Murid Mengikuti Ujian</th>
+                    <th class="text-cyan-50"> Tanggal ujian </th>
                     <th class="text-cyan-50">Action</th>
                 </tr>
             </thead> <!--END thead-->
             <tbody>
                 {{-- looping row --}}
-                @foreach ($students as $student)
+                @foreach ($result as $ress)
                 <!-- Alternate row color based on odd/even index -->
                 <tr class="{{ $loop->iteration % 2 === 0 ? 'bg-white' : 'bg-rgba-145-200-228-02' }}">
-                    <th>{{$student->id}}</th>
-                    <td>{{$student->nis}}</td>
-                    <td>{{$student->name}}</td>
-                    <td>{{$student->grade}}</td>
-                    <td>{{$student->gender}}</td>
-                    <td>{{$student->email}}</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ $ress->quiz->title }}</td>
+                    {{--  <td>{{ $ress->student->nis }}</td>  --}}
+                    <td>{{ $ress->quiz->count() }}</td>
+                    <td>{{ Carbon\Carbon::parse($ress->quiz->quiz_date)->translatedFormat('l, d F Y') }}</td>
                     <td class="flex gap-2">
-                        <a class="btn btn-warning text-md my-1" href="{{route( 'students.edit',$student->id )}}">Edit</a>
+                        <a class="btn btn-warning text-md my-1" href="#">Edit</a>
                         <!-- Open the modal using ID.showModal() method -->
-                        <form action="{{route('students.destroy', $student->id)}}" method="POST">
+                        <form action="#" method="POST">
                             @method('DELETE')
                             @csrf
                             <input type="submit" class="btn btn-error text-md my-1 " value="Delete">

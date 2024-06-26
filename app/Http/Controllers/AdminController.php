@@ -10,7 +10,6 @@ class AdminController extends Controller
     {
         $totalUsers = User::count();
         $totalMurid = Student::count();
-
         return view('admin.admin_dashboard', compact('totalUsers', 'totalMurid'));
     }//End Method Dashboard Admin
 }
